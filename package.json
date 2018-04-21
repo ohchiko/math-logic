@@ -1,0 +1,32 @@
+{
+  "name": "math-logic",
+  "version": "0.0.1",
+  "description": "tugas mata kuliah logika matematika membuat aplikasi logika matematika",
+  "main": "app.js",
+  "scripts": {
+      "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+      "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+      "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+      "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ohchiko/math-logic.git"
+  },
+  "keywords": [
+    "mlogic"
+  ],
+  "author": "gregorio (chiko150@outlook.com)",
+  "license": "copyright",
+  "bugs": {
+    "url": "https://github.com/ohchiko/math-logic/issues"
+  },
+  "homepage": "https://github.com/ohchiko/math-logic#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
+    "laravel-mix": "^2.1.11"
+  },
+  "dependencies": {
+    "mithril": "^1.1.6"
+  }
+}
