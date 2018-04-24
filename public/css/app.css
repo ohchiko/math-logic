@@ -22,15 +22,24 @@ a {
 
 .landing {
   height: 100vh;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-flow: column wrap;
-          flex-flow: column wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
 }
 
 .landing > header {
-  background-color: #2bd8d0;
+  background-color: turquoise;
   padding: 1rem 3rem;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.landing > header > .title {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-flex: 0;
       -ms-flex: 0 1 auto;
           flex: 0 1 auto;
@@ -41,8 +50,14 @@ a {
   font-family: "Satisfy", cursive;
 }
 
-.landing > header > .title > span:nth-child(2) {
-  margin-left: 1rem;
+.landing > header > .nav-bar {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: none;
 }
 
 .landing > header > .nav-container {
@@ -52,6 +67,12 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .landing > header > .nav-container > .nav-text {
@@ -69,12 +90,22 @@ a {
           filter: invert(100%);
 }
 
+.landing > header > .nav-cover {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 4;
+}
+
 .landing > .landing-content {
-  background-color: #2bd8d0;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+  background-color: turquoise;
   padding: 3rem;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 .landing > .landing-content > .landing-title {
@@ -90,5 +121,86 @@ a {
 
 .landing > .landing-content > .landing-desc {
   letter-spacing: .2rem;
+}
+
+@media all and (max-width: 640px) {
+  .landing > header {
+    padding: 1rem;
+  }
+
+  .landing > header > .nav-bar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .landing > header > .nav-bar > i {
+    cursor: pointer;
+    -webkit-transition: all .15s ease-out;
+    transition: all .15s ease-out;
+  }
+
+  .landing > header > .nav-bar > i:nth-child(2) {
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+    opacity: 0;
+    position: absolute;
+  }
+
+  .landing > header > .nav-bar.active > i:nth-child(1) {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+    opacity: 0;
+  }
+
+  .landing > header > .nav-bar.active > i:nth-child(2) {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    opacity: 1;
+  }
+
+  .landing > header > .nav-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
+    display: none;
+    position: absolute;
+    top: 4rem;
+    right: 0;
+    z-index: 5;
+    -webkit-box-shadow: 0 .15rem .15rem 0 #AAAAAA;
+            box-shadow: 0 .15rem .15rem 0 #AAAAAA;
+  }
+
+  .landing > header > .nav-container.active {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: #FFFFFF;
+  }
+
+  .landing > header > .nav-container.active > .nav-text {
+    margin: .5rem 1rem;
+  }
+
+  .landing > header > .nav-container.active + .nav-cover {
+    display: block;
+  }
+
+  .landing > .landing-content {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
+  .landing > .landing-content > .landing-title {
+    text-align: center;
+    font-size: xx-large;
+  }
+
+  .landing > .landing-content > .landing-desc {
+    font-size: small;
+  }
 }
 

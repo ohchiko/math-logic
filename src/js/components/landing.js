@@ -14,7 +14,7 @@ var app = {
                 ]),
                 m('.landing-desc',
                     m('span', 'Pelajari logika matematika\
-                                serta lakukan perhitungan menggunakan kalkulator\
+                                serta lakukan perhitungan\
                                 melalui aplikasi ini.'))
             ])
         ]);

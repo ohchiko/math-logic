@@ -1,27 +1,36 @@
 
 .landing {
     height: 100vh;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
 
     > header {
         background-color: $mainColor;
         padding: 1rem 3rem;
-        flex: 0 1 auto;
+        flex-grow: 1;
 
         > .title {
+            align-items: center;
+            flex: 0 1 auto;
+
             > span:nth-child(1) {
                 font-size: x-large;
                 font-family: $titleFont;
             }
+        }
 
-            > span:nth-child(2) {
-                margin-left: 1rem;
-            }
+        > .nav-bar {
+            flex: 0 1 auto;
+            align-items: center;
+            display: none;
         }
 
         > .nav-container {
             justify-content: right;
             align-items: center;
+            flex: 0 1 auto;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
 
             > .nav-text {
                 margin: 0 1rem;
@@ -36,12 +45,22 @@
                 }
             }
         }
+
+        > .nav-cover {
+            display: none;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 4
+        }
     }
 
     > .landing-content {
         background-color: $mainColor;
-        flex: 1 1 auto;
         padding: 3rem;
+        flex-grow: 1;
 
         > .landing-title {
             font-family: $bigFont;
@@ -55,6 +74,75 @@
 
         > .landing-desc {
             letter-spacing: .2rem;
+        }
+    }
+}
+
+@media all and (max-width: 640px) {
+    .landing {
+        > header {
+            padding: 1rem;
+
+            > .nav-bar {
+                display: flex;
+
+                > i {
+                    cursor: pointer;
+                    transition: all .15s ease-out;
+                }
+
+                > i:nth-child(2) {
+                    transform: rotate(-90deg);
+                    opacity: 0;
+                    position: absolute;
+                }
+            }
+
+            > .nav-bar.active > i:nth-child(1) {
+                transform: rotate(90deg);
+                opacity: 0;
+            }
+
+            > .nav-bar.active > i:nth-child(2) {
+                transform: rotate(0);
+                opacity: 1;
+            }
+
+            > .nav-container {
+                flex-flow: column wrap;
+                display: none;
+                position: absolute;
+                top: 4rem;
+                right: 0;
+                z-index: 5;
+                box-shadow: 0 .15rem .15rem 0 #AAAAAA;
+            }
+
+            > .nav-container.active {
+                display: flex;
+                background-color: #FFFFFF;
+
+                > .nav-text {
+                    margin: .5rem 1rem;
+                }
+            }
+
+            > .nav-container.active + .nav-cover {
+                display: block;
+            }
+        }
+
+        > .landing-content {
+            justify-content: center;
+
+            > .landing-title {
+                text-align: center;
+                font-size: xx-large;
+            }
+
+            > .landing-desc {
+                font-size: small;
+            }
         }
     }
 }
