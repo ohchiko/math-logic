@@ -11,6 +11,37 @@ import {
 
 import multi from './operations/multi';
 
+var layoutNg = {
+    view: () => {
+        return [
+            m('h1', 'Negasi'),
+            m('form', {
+                onsubmit: (e) => {
+                    e.preventDefault();
+
+                    document.getElementById('ng')
+                        .value = negasi(
+                            e.target.elements.state.value
+                        );
+                }
+            }, [
+                m('input', {
+                    type: 'text',
+                    name: 'state',
+                    placeholder: 'Pernyataan'
+                }),
+                m('button', {
+                    type: 'submit'
+                }, 'Hitung')
+            ]),
+            m('input#ng', {
+                placeholder: 'Hasil',
+                readonly: 'readonly'
+            })
+        ];
+    }
+}
+
 var layoutKj = {
     view: () => {
         return [
@@ -19,7 +50,7 @@ var layoutKj = {
                 onsubmit: (e) => {
                     e.preventDefault();
 
-                    document.getElementById('kon')
+                    document.getElementById('kj')
                         .value = konjungsi(
                             e.target.elements.state1.value,
                             e.target.elements.state2.value
@@ -40,7 +71,7 @@ var layoutKj = {
                     type: 'submit'
                 }, 'Hitung')
             ]),
-            m('input#kon', {
+            m('input#kj', {
                 placeholder: 'Hasil',
                 readonly: 'readonly'
             })
@@ -56,7 +87,7 @@ var layoutDj = {
                 onsubmit: (e) => {
                     e.preventDefault();
 
-                    document.getElementById('dis')
+                    document.getElementById('dj')
                         .value = disjungsi(
                             e.target.elements.state1.value,
                             e.target.elements.state2.value
@@ -77,7 +108,7 @@ var layoutDj = {
                     type: 'submit'
                 }, 'Hitung')
             ]),
-            m('input#dis', {
+            m('input#dj', {
                 placeholder: 'Hasil',
                 readonly: 'readonly'
             })
@@ -191,6 +222,7 @@ var layoutMn = {
 }
 
 m.render(document.body, [
+    m(layoutNg),
     m(layoutKj),
     m(layoutDj),
     m(layoutIp),

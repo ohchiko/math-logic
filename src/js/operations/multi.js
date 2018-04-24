@@ -14,7 +14,7 @@ const app = (str) => {
             let val = neg.exec(str) + '',
                 a = val.charAt(1);
 
-            str = str.replace(val, + negasi(a));
+            str = str.replace(val, negasi(a));
         }
 
         let a = str.charAt(0),
@@ -29,7 +29,7 @@ const app = (str) => {
             let val = neg.exec(str) + '',
                 a = val.charAt(1);
 
-            str = str.replace(val, + negasi(a));
+            str = str.replace(val, negasi(a));
         }
 
         while (reg.test(str)) {
@@ -57,19 +57,19 @@ const app = (str) => {
 const operate = (a, b, op) => {
     switch (op) {
         case '^':
-            return + konjungsi(a, b)
+            return konjungsi(a, b)
             break;
 
         case 'v':
-            return + disjungsi(a, b)
+            return disjungsi(a, b)
             break;
 
         case '=>':
-            return + implikasi(a, b)
+            return implikasi(a, b)
             break;
 
         case '<=>':
-            return + biimplikasi(a, b)
+            return biimplikasi(a, b)
             break;
     }
 }

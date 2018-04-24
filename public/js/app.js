@@ -103,33 +103,33 @@ module.exports = g;
 
 var negasi = function negasi(a) {
     a = a == true;
-    return !a;
+    return +!a;
 };
 
 var konjungsi = function konjungsi(a, b) {
     a = a == true;
     b = b == true;
-    return a && b;
+    return +(a && b);
 };
 
 var disjungsi = function disjungsi(a, b) {
     a = a == true;
     b = b == true;
-    return a || b;
+    return +(a || b);
 };
 
 var implikasi = function implikasi(a, b) {
     a = a == true;
     b = b == true;
-    if (!b && a) return false;
-    return true;
+    if (!b && a) return +false;
+    return +true;
 };
 
 var biimplikasi = function biimplikasi(a, b) {
     a = a == true;
     b = b == true;
-    if (a && b || !a && !b) return true;
-    return false;
+    if (a && b || !a && !b) return +true;
+    return +false;
 };
 
 /***/ }),
@@ -155,13 +155,34 @@ window.m = __webpack_require__(4);
 
 
 
+var layoutNg = {
+    view: function view() {
+        return [m('h1', 'Negasi'), m('form', {
+            onsubmit: function onsubmit(e) {
+                e.preventDefault();
+
+                document.getElementById('ng').value = Object(__WEBPACK_IMPORTED_MODULE_0__operations_single__["e" /* negasi */])(e.target.elements.state.value);
+            }
+        }, [m('input', {
+            type: 'text',
+            name: 'state',
+            placeholder: 'Pernyataan'
+        }), m('button', {
+            type: 'submit'
+        }, 'Hitung')]), m('input#ng', {
+            placeholder: 'Hasil',
+            readonly: 'readonly'
+        })];
+    }
+};
+
 var layoutKj = {
     view: function view() {
         return [m('h1', 'Konjungsi'), m('form', {
             onsubmit: function onsubmit(e) {
                 e.preventDefault();
 
-                document.getElementById('kon').value = Object(__WEBPACK_IMPORTED_MODULE_0__operations_single__["d" /* konjungsi */])(e.target.elements.state1.value, e.target.elements.state2.value);
+                document.getElementById('kj').value = Object(__WEBPACK_IMPORTED_MODULE_0__operations_single__["d" /* konjungsi */])(e.target.elements.state1.value, e.target.elements.state2.value);
             }
         }, [m('input', {
             type: 'text',
@@ -173,7 +194,7 @@ var layoutKj = {
             placeholder: 'Pernyataan 2'
         }), m('button', {
             type: 'submit'
-        }, 'Hitung')]), m('input#kon', {
+        }, 'Hitung')]), m('input#kj', {
             placeholder: 'Hasil',
             readonly: 'readonly'
         })];
@@ -186,7 +207,7 @@ var layoutDj = {
             onsubmit: function onsubmit(e) {
                 e.preventDefault();
 
-                document.getElementById('dis').value = Object(__WEBPACK_IMPORTED_MODULE_0__operations_single__["b" /* disjungsi */])(e.target.elements.state1.value, e.target.elements.state2.value);
+                document.getElementById('dj').value = Object(__WEBPACK_IMPORTED_MODULE_0__operations_single__["b" /* disjungsi */])(e.target.elements.state1.value, e.target.elements.state2.value);
             }
         }, [m('input', {
             type: 'text',
@@ -198,7 +219,7 @@ var layoutDj = {
             placeholder: 'Pernyataan 2'
         }), m('button', {
             type: 'submit'
-        }, 'Hitung')]), m('input#dis', {
+        }, 'Hitung')]), m('input#dj', {
             placeholder: 'Hasil',
             readonly: 'readonly'
         })];
@@ -276,7 +297,7 @@ var layoutMn = {
     }
 };
 
-m.render(document.body, [m(layoutKj), m(layoutDj), m(layoutIp), m(layoutBp), m(layoutMn)]);
+m.render(document.body, [m(layoutNg), m(layoutKj), m(layoutDj), m(layoutIp), m(layoutBp), m(layoutMn)]);
 
 /***/ }),
 /* 4 */
@@ -2010,7 +2031,7 @@ var app = function app(str) {
             var val = neg.exec(str) + '',
                 _a = val.charAt(1);
 
-            str = str.replace(val, +Object(__WEBPACK_IMPORTED_MODULE_0__single__["e" /* negasi */])(_a));
+            str = str.replace(val, Object(__WEBPACK_IMPORTED_MODULE_0__single__["e" /* negasi */])(_a));
         }
 
         var a = str.charAt(0),
@@ -2025,7 +2046,7 @@ var app = function app(str) {
             var _val = neg.exec(str) + '',
                 _a2 = _val.charAt(1);
 
-            str = str.replace(_val, +Object(__WEBPACK_IMPORTED_MODULE_0__single__["e" /* negasi */])(_a2));
+            str = str.replace(_val, Object(__WEBPACK_IMPORTED_MODULE_0__single__["e" /* negasi */])(_a2));
         }
 
         while (reg.test(str)) {
@@ -2052,19 +2073,19 @@ var app = function app(str) {
 var operate = function operate(a, b, op) {
     switch (op) {
         case '^':
-            return +Object(__WEBPACK_IMPORTED_MODULE_0__single__["d" /* konjungsi */])(a, b);
+            return Object(__WEBPACK_IMPORTED_MODULE_0__single__["d" /* konjungsi */])(a, b);
             break;
 
         case 'v':
-            return +Object(__WEBPACK_IMPORTED_MODULE_0__single__["b" /* disjungsi */])(a, b);
+            return Object(__WEBPACK_IMPORTED_MODULE_0__single__["b" /* disjungsi */])(a, b);
             break;
 
         case '=>':
-            return +Object(__WEBPACK_IMPORTED_MODULE_0__single__["c" /* implikasi */])(a, b);
+            return Object(__WEBPACK_IMPORTED_MODULE_0__single__["c" /* implikasi */])(a, b);
             break;
 
         case '<=>':
-            return +Object(__WEBPACK_IMPORTED_MODULE_0__single__["a" /* biimplikasi */])(a, b);
+            return Object(__WEBPACK_IMPORTED_MODULE_0__single__["a" /* biimplikasi */])(a, b);
             break;
     }
 };
