@@ -1,0 +1,198 @@
+
+.container {
+    height: 100vh;
+    flex-flow: column;
+
+    > header {
+        background-color: $mainColor;
+        padding: 1rem 3rem;
+        flex: 0 1 auto;
+
+        > .title {
+            align-items: center;
+            flex: 0 1 auto;
+
+            > a {
+                font-size: x-large;
+                font-family: $titleFont;
+                transition: all .15s ease;
+            }
+
+            > a:hover,
+            > a:focus {
+                filter: invert(100%);
+            }
+        }
+
+        > .nav-bar {
+            flex: 0 1 auto;
+            align-items: center;
+            display: none;
+        }
+
+        > .nav-container {
+            justify-content: right;
+            align-items: center;
+            flex: 0 1 auto;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            > .nav-text {
+                margin: 0 1rem;
+
+                > a {
+                    transition: all .15s ease;
+                }
+
+                > a:hover,
+                > a:focus {
+                    filter: invert(100%);
+                }
+
+                > a.active,
+                > a:hover,
+                > a:focus {
+                    border-bottom: .1rem solid;
+                }
+            }
+        }
+
+        > .nav-cover {
+            display: none;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: 4
+        }
+    }
+
+    > header.invert {
+        background-color: $secondColor;
+        color: $thirdColor;
+        box-shadow: 0 .05rem .15rem 0 #AAAAAA;
+
+        position: relative;
+        z-index: 5;
+
+        > .title {
+            > a:hover,
+            > a:focus {
+                filter: none;
+                color: $mainColor;
+            }
+        }
+
+        > .nav-container {
+            > .nav-text {
+                > a.active,
+                > a:focus,
+                > a:hover {
+                    filter: none;
+                    color: $mainColor;
+                }
+            }
+        }
+    }
+
+    > .content {
+        background-color: $mainColor;
+        padding: 3rem;
+        flex: 1 1 auto;
+
+        > .title {
+            font-family: $bigFont;
+            font-size: 5rem;
+            margin-bottom: 3rem;
+
+            > .title-text.invert {
+                filter: invert(100%);
+            }
+        }
+
+        > .desc {
+            letter-spacing: .2rem;
+        }
+    }
+
+    > .content.invert {
+        background-color: $secondColor;
+    }
+}
+
+@media all and (max-width: 640px) {
+    .container {
+        > header {
+            padding: 1rem;
+
+            > .nav-bar {
+                display: flex;
+
+                > i {
+                    cursor: pointer;
+                    transition: all .15s ease-out;
+                }
+
+                > i:nth-child(2) {
+                    transform: rotate(-90deg);
+                    opacity: 0;
+                    position: absolute;
+                }
+            }
+
+            > .nav-bar.active > i:nth-child(1) {
+                transform: rotate(90deg);
+                opacity: 0;
+            }
+
+            > .nav-bar.active > i:nth-child(2) {
+                transform: rotate(0);
+                opacity: 1;
+            }
+
+            > .nav-container {
+                flex-flow: column wrap;
+                display: none;
+                position: absolute;
+                top: 4rem;
+                right: 0;
+                z-index: 5;
+                box-shadow: 0 .15rem .15rem 0 #AAAAAA;
+            }
+
+            > .nav-container.active {
+                display: flex;
+                background-color: $secondColor;
+
+                > .nav-text {
+                    margin: .5rem 1rem;
+
+                    > a:hover,
+                    > a:focus {
+                        filter: none;
+                        color: $mainColor;
+                    }
+                }
+            }
+
+            > .nav-container.active + .nav-cover {
+                display: block;
+            }
+        }
+
+        > .content {
+            justify-content: center;
+
+            > .title {
+                text-align: center;
+                font-size: xx-large;
+            }
+
+            > .desc {
+                font-size: small;
+            }
+        }
+    }
+}

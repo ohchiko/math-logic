@@ -12,11 +12,19 @@ let CleanWebpackPlugin = require('clean-webpack-plugin');
  |
  */
 
-mix.js('src/js/display.js', 'public/js')
-    .sass('src/sass/display.scss', 'public/css')
+mix.js('src/js/app.js', 'public/js')
+    .sass('src/sass/app.scss', 'public/css')
+    .sass('src/vendor/fontawesome/scss/fontawesome.scss', 'public/css')
+    .copyDirectory('src/vendor/fontawesome/webfonts', 'public/fonts')
+    .copyDirectory('src/vendor/gfonts/fonts', 'public/fonts')
+    .styles([
+        'src/vendor/gfonts/css/raleway.css',
+        'src/vendor/gfonts/css/robotoCondensed.css',
+        'src/vendor/gfonts/css/satisfy.css',
+    ], 'public/css/gfonts.css')
     .webpackConfig({
         plugins: [
-            new CleanWebpackPlugin(['public/js', 'public/css'])
+            new CleanWebpackPlugin(['public/js', 'public/css', 'public/fonts'])
         ]
     });
 
