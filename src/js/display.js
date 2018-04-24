@@ -1,15 +1,7 @@
 
 window.m = require('mithril');
 
-import {
-    negasi,
-    konjungsi,
-    disjungsi,
-    implikasi,
-    biimplikasi
-} from './operations/single';
-
-import multi from './operations/multi';
+import handle from './core/handler';
 
 var layoutNg = {
     view: () => {
@@ -20,8 +12,8 @@ var layoutNg = {
                     e.preventDefault();
 
                     document.getElementById('ng')
-                        .value = negasi(
-                            e.target.elements.state.value
+                        .value = handle(
+                            '~' + e.target.elements.state.value
                         );
                 }
             }, [
@@ -51,9 +43,10 @@ var layoutKj = {
                     e.preventDefault();
 
                     document.getElementById('kj')
-                        .value = konjungsi(
+                        .value = handle(
                             e.target.elements.state1.value,
-                            e.target.elements.state2.value
+                            e.target.elements.state2.value,
+                            '^'
                         );
                 }
             }, [
@@ -88,9 +81,10 @@ var layoutDj = {
                     e.preventDefault();
 
                     document.getElementById('dj')
-                        .value = disjungsi(
+                        .value = handle(
                             e.target.elements.state1.value,
-                            e.target.elements.state2.value
+                            e.target.elements.state2.value,
+                            'v'
                         );
                 }
             }, [
@@ -125,9 +119,10 @@ var layoutIp = {
                     e.preventDefault();
 
                     document.getElementById('ip')
-                        .value = implikasi(
+                        .value = handle(
                             e.target.elements.state1.value,
-                            e.target.elements.state2.value
+                            e.target.elements.state2.value,
+                            '=>'
                         );
                 }
             }, [
@@ -162,9 +157,10 @@ var layoutBp = {
                     e.preventDefault();
 
                     document.getElementById('bp')
-                        .value = biimplikasi(
+                        .value = handle(
                             e.target.elements.state1.value,
-                            e.target.elements.state2.value
+                            e.target.elements.state2.value,
+                            '<=>'
                         );
                 }
             }, [
@@ -199,7 +195,7 @@ var layoutMn = {
                     e.preventDefault();
 
                     document.getElementById('mn')
-                        .value = multi(
+                        .value = handle(
                             e.target.elements.state.value
                         );
                 }

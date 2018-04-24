@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -92,66 +92,21 @@ module.exports = g;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return negasi; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return konjungsi; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return disjungsi; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return implikasi; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return biimplikasi; });
-
-var negasi = function negasi(a) {
-    a = a == true;
-    return +!a;
-};
-
-var konjungsi = function konjungsi(a, b) {
-    a = a == true;
-    b = b == true;
-    return +(a && b);
-};
-
-var disjungsi = function disjungsi(a, b) {
-    a = a == true;
-    b = b == true;
-    return +(a || b);
-};
-
-var implikasi = function implikasi(a, b) {
-    a = a == true;
-    b = b == true;
-    if (!b && a) return +false;
-    return +true;
-};
-
-var biimplikasi = function biimplikasi(a, b) {
-    a = a == true;
-    b = b == true;
-    if (a && b || !a && !b) return +true;
-    return +false;
-};
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(3);
+__webpack_require__(2);
 module.exports = __webpack_require__(9);
 
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__operations_single__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__operations_multi__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_handler__ = __webpack_require__(14);
 
-window.m = __webpack_require__(4);
-
-
+window.m = __webpack_require__(3);
 
 
 
@@ -161,7 +116,7 @@ var layoutNg = {
             onsubmit: function onsubmit(e) {
                 e.preventDefault();
 
-                document.getElementById('ng').value = Object(__WEBPACK_IMPORTED_MODULE_0__operations_single__["e" /* negasi */])(e.target.elements.state.value);
+                document.getElementById('ng').value = Object(__WEBPACK_IMPORTED_MODULE_0__core_handler__["a" /* default */])('~' + e.target.elements.state.value);
             }
         }, [m('input', {
             type: 'text',
@@ -182,7 +137,7 @@ var layoutKj = {
             onsubmit: function onsubmit(e) {
                 e.preventDefault();
 
-                document.getElementById('kj').value = Object(__WEBPACK_IMPORTED_MODULE_0__operations_single__["d" /* konjungsi */])(e.target.elements.state1.value, e.target.elements.state2.value);
+                document.getElementById('kj').value = Object(__WEBPACK_IMPORTED_MODULE_0__core_handler__["a" /* default */])(e.target.elements.state1.value, e.target.elements.state2.value, '^');
             }
         }, [m('input', {
             type: 'text',
@@ -207,7 +162,7 @@ var layoutDj = {
             onsubmit: function onsubmit(e) {
                 e.preventDefault();
 
-                document.getElementById('dj').value = Object(__WEBPACK_IMPORTED_MODULE_0__operations_single__["b" /* disjungsi */])(e.target.elements.state1.value, e.target.elements.state2.value);
+                document.getElementById('dj').value = Object(__WEBPACK_IMPORTED_MODULE_0__core_handler__["a" /* default */])(e.target.elements.state1.value, e.target.elements.state2.value, 'v');
             }
         }, [m('input', {
             type: 'text',
@@ -232,7 +187,7 @@ var layoutIp = {
             onsubmit: function onsubmit(e) {
                 e.preventDefault();
 
-                document.getElementById('ip').value = Object(__WEBPACK_IMPORTED_MODULE_0__operations_single__["c" /* implikasi */])(e.target.elements.state1.value, e.target.elements.state2.value);
+                document.getElementById('ip').value = Object(__WEBPACK_IMPORTED_MODULE_0__core_handler__["a" /* default */])(e.target.elements.state1.value, e.target.elements.state2.value, '=>');
             }
         }, [m('input', {
             type: 'text',
@@ -257,7 +212,7 @@ var layoutBp = {
             onsubmit: function onsubmit(e) {
                 e.preventDefault();
 
-                document.getElementById('bp').value = Object(__WEBPACK_IMPORTED_MODULE_0__operations_single__["a" /* biimplikasi */])(e.target.elements.state1.value, e.target.elements.state2.value);
+                document.getElementById('bp').value = Object(__WEBPACK_IMPORTED_MODULE_0__core_handler__["a" /* default */])(e.target.elements.state1.value, e.target.elements.state2.value, '<=>');
             }
         }, [m('input', {
             type: 'text',
@@ -282,7 +237,7 @@ var layoutMn = {
             onsubmit: function onsubmit(e) {
                 e.preventDefault();
 
-                document.getElementById('mn').value = Object(__WEBPACK_IMPORTED_MODULE_1__operations_multi__["a" /* default */])(e.target.elements.state.value);
+                document.getElementById('mn').value = Object(__WEBPACK_IMPORTED_MODULE_0__core_handler__["a" /* default */])(e.target.elements.state.value);
             }
         }, [m('input', {
             type: 'text',
@@ -300,7 +255,7 @@ var layoutMn = {
 m.render(document.body, [m(layoutNg), m(layoutKj), m(layoutDj), m(layoutIp), m(layoutBp), m(layoutMn)]);
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate, global) {;(function() {
@@ -1560,10 +1515,10 @@ m.vnode = Vnode
 if (true) module["exports"] = m
 else window.m = m
 }());
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5).setImmediate, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4).setImmediate, __webpack_require__(0)))
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -1619,7 +1574,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(6);
+__webpack_require__(5);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -1633,7 +1588,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -1823,10 +1778,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(6)))
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -2016,55 +1971,90 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 8 */
+/* 7 */,
+/* 8 */,
+/* 9 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__single__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__operations__ = __webpack_require__(15);
 
 
 
-var app = function app(str) {
-    var neg = /~\d/;
-    if (str.length == 3) {
-        if (neg.test(str)) {
-            var val = neg.exec(str) + '',
-                _a = val.charAt(1);
+var app = function app() {
+    var str = null,
+        neg = /~\d/,
+        opReg = /[\^|v|\=\>|\<\=\>]+/;
 
-            str = str.replace(val, Object(__WEBPACK_IMPORTED_MODULE_0__single__["e" /* negasi */])(_a));
+    for (var i = 0; i < arguments.length; i++) {
+        arguments[i] = arguments[i].replace(/benar|true|t|b/, '1');
+        arguments[i] = arguments[i].replace(/salah|false|f|s/, '0');
+    }
+    if (arguments.length > 1) {
+        var a = arguments[0],
+            b = arguments[1],
+            op = arguments[2];
+
+        if (!a || !b || !op) {
+            console.error('Invalid argument(s) supplied.');
+            return 'invalid';
         }
-
-        var a = str.charAt(0),
-            b = /\d$/.exec(str) + '',
-            op = /[\^|v|\=\>|\<\=\>]+/.exec(str) + '';
 
         str = operate(a, b, op);
     } else {
-        var reg = /\d[\^|v|\=\>|\<\=\>]+\d/;
+        arguments[0] = arguments[0].replace(/benar|true|t|b/, '1');
+        arguments[0] = arguments[0].replace(/salah|false|f|s/, '0');
+        str = arguments[0];
+        if (str.length == 3) {
+            if (neg.test(str)) {
+                var val = neg.exec(str) + '',
+                    _a2 = val.charAt(1);
 
-        while (neg.test(str)) {
-            var _val = neg.exec(str) + '',
-                _a2 = _val.charAt(1);
+                str = str.replace(val, Object(__WEBPACK_IMPORTED_MODULE_0__operations__["e" /* negasi */])(_a2));
+            }
 
-            str = str.replace(_val, Object(__WEBPACK_IMPORTED_MODULE_0__single__["e" /* negasi */])(_a2));
-        }
+            var _a = str.charAt(0),
+                _b = /\d$/.exec(str) + '',
+                _op = opReg.exec(str) + '';
 
-        while (reg.test(str)) {
-            var _val2 = reg.exec(str) + '',
-                _a3 = _val2.charAt(0),
-                _b = /\d$/.exec(_val2) + '',
-                _op = /[\^|v|\=\>|\<\=\>]+/.exec(_val2) + '';
+            str = operate(_a, _b, _op);
+        } else {
+            var reg = /\d[\^|v|\=\>|\<\=\>]+\d/;
 
-            str = str.replace(_val2, '#');
+            while (neg.test(str)) {
+                var _val = neg.exec(str) + '',
+                    _a3 = _val.charAt(1);
 
-            var res = operate(_a3, _b, _op);
+                str = str.replace(_val, Object(__WEBPACK_IMPORTED_MODULE_0__operations__["e" /* negasi */])(_a3));
+            }
 
-            var hashtag = /\(#\)/;
-            if (hashtag.test(str)) str = str.replace(hashtag, res);else str = str.replace(/#/, res);
-        }
-        if (str.length > 1) {
-            console.error('Invalid argument supplied.');
-            return 'invalid';
+            while (reg.test(str)) {
+                var _val2 = reg.exec(str) + '',
+                    _a4 = _val2.charAt(0),
+                    _b2 = /\d$/.exec(_val2) + '',
+                    _op2 = opReg.exec(_val2) + '';
+
+                str = str.replace(_val2, '#');
+
+                var res = operate(_a4, _b2, _op2);
+
+                var hashtag = /\(#\)/;
+                if (hashtag.test(str)) str = str.replace(hashtag, res);else str = str.replace(/#/, res);
+            }
+            if (str.length > 1) {
+                console.error('Invalid argument(s) supplied.');
+                return 'invalid';
+            }
         }
     }
     return str;
@@ -2073,19 +2063,19 @@ var app = function app(str) {
 var operate = function operate(a, b, op) {
     switch (op) {
         case '^':
-            return Object(__WEBPACK_IMPORTED_MODULE_0__single__["d" /* konjungsi */])(a, b);
+            return Object(__WEBPACK_IMPORTED_MODULE_0__operations__["d" /* konjungsi */])(a, b);
             break;
 
         case 'v':
-            return Object(__WEBPACK_IMPORTED_MODULE_0__single__["b" /* disjungsi */])(a, b);
+            return Object(__WEBPACK_IMPORTED_MODULE_0__operations__["b" /* disjungsi */])(a, b);
             break;
 
         case '=>':
-            return Object(__WEBPACK_IMPORTED_MODULE_0__single__["c" /* implikasi */])(a, b);
+            return Object(__WEBPACK_IMPORTED_MODULE_0__operations__["c" /* implikasi */])(a, b);
             break;
 
         case '<=>':
-            return Object(__WEBPACK_IMPORTED_MODULE_0__single__["a" /* biimplikasi */])(a, b);
+            return Object(__WEBPACK_IMPORTED_MODULE_0__operations__["a" /* biimplikasi */])(a, b);
             break;
     }
 };
@@ -2093,10 +2083,46 @@ var operate = function operate(a, b, op) {
 /* harmony default export */ __webpack_exports__["a"] = (app);
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports) {
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return negasi; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return konjungsi; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return disjungsi; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return implikasi; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return biimplikasi; });
+
+var negasi = function negasi(a) {
+    a = a == true;
+    return +!a;
+};
+
+var konjungsi = function konjungsi(a, b) {
+    a = a == true;
+    b = b == true;
+    return +(a && b);
+};
+
+var disjungsi = function disjungsi(a, b) {
+    a = a == true;
+    b = b == true;
+    return +(a || b);
+};
+
+var implikasi = function implikasi(a, b) {
+    a = a == true;
+    b = b == true;
+    if (!b && a) return +false;
+    return +true;
+};
+
+var biimplikasi = function biimplikasi(a, b) {
+    a = a == true;
+    b = b == true;
+    if (a && b || !a && !b) return +true;
+    return +false;
+};
 
 /***/ })
 /******/ ]);

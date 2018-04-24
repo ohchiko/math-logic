@@ -12,8 +12,8 @@ let CleanWebpackPlugin = require('clean-webpack-plugin');
  |
  */
 
-mix.js('src/js/app.js', 'public/js')
-    .sass('src/sass/app.scss', 'public/css')
+mix.js('src/js/display.js', 'public/js')
+    .sass('src/sass/display.scss', 'public/css')
     .webpackConfig({
         plugins: [
             new CleanWebpackPlugin(['public/js', 'public/css'])
