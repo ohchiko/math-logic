@@ -95,16 +95,24 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(2);
-module.exports = __webpack_require__(7);
+module.exports = __webpack_require__(8);
 
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_landing__ = __webpack_require__(13);
 window.m = __webpack_require__(3);
 
-m.render(document.body, 'Welcome, Guest!');
+
+
+m.route.prefix('#');
+m.route(document.body, '', {
+    '': __WEBPACK_IMPORTED_MODULE_0__components_landing__["a" /* default */]
+});
 
 /***/ }),
 /* 3 */
@@ -1824,9 +1832,45 @@ process.umask = function() { return 0; };
 
 /***/ }),
 /* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var app = {
+    view: function view() {
+        return m('header.flex', [m('.title', [m('span', 'mathLogics'), m('span', 'Math Truth Table')]), m('.flex'), m('.nav-container.flex', [m('.nav-text', m('a', { href: '#' }, m('span', 'Konjungsi'))), m('.nav-text', m('a', { href: '#' }, m('span', 'Disjungsi'))), m('.nav-text', m('a', { href: '#' }, m('span', 'Implikasi'))), m('.nav-text', m('a', { href: '#' }, m('span', 'Biimplikasi'))), m('.nav-text', m('a', { href: '#' }, m('span', 'Tabel Kebenaran')))])]);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (app);
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(7);
+
+
+
+var app = {
+    view: function view() {
+        return m('.landing.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */]), m('.landing-content', [m('.landing-title', [m('.title-text', 'LEARN'), m('.title-text', 'MATH LOGICS'), m('.title-text.invert', 'THROUGH'), m('.title-text.invert', 'WEB APPLICATION')]), m('.landing-desc', m('span', 'Pelajari logika matematika\
+                                serta lakukan perhitungan menggunakan kalkulator\
+                                melalui aplikasi ini.'))])]);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (app);
 
 /***/ })
 /******/ ]);

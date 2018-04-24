@@ -1,8 +1,22 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700');
-$mainFont: 'Montserrat', sans-serif;
+
+@import "_variables";
 
 body {
     margin: 0;
     padding: 0;
     font-family: $mainFont;
+    font-weight: 300;
 }
+
+.flex {
+    display: flex;
+    flex: 1;
+}
+
+a {
+    color: inherit;
+    font-family: inherit;
+    text-decoration: none;
+}
+
+@import "_landing";

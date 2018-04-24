@@ -1,0 +1,60 @@
+
+.landing {
+    height: 100vh;
+    flex-flow: column wrap;
+
+    > header {
+        background-color: $mainColor;
+        padding: 1rem 3rem;
+        flex: 0 1 auto;
+
+        > .title {
+            > span:nth-child(1) {
+                font-size: x-large;
+                font-family: $titleFont;
+            }
+
+            > span:nth-child(2) {
+                margin-left: 1rem;
+            }
+        }
+
+        > .nav-container {
+            justify-content: right;
+            align-items: center;
+
+            > .nav-text {
+                margin: 0 1rem;
+
+                > a {
+                    transition: all .15s ease;
+                }
+
+                > a:hover,
+                > a:focus {
+                    filter: invert(100%);
+                }
+            }
+        }
+    }
+
+    > .landing-content {
+        background-color: $mainColor;
+        flex: 1 1 auto;
+        padding: 3rem;
+
+        > .landing-title {
+            font-family: $bigFont;
+            font-size: 5rem;
+            margin-bottom: 3rem;
+
+            > .title-text.invert {
+                filter: invert(100%);
+            }
+        }
+
+        > .landing-desc {
+            letter-spacing: .2rem;
+        }
+    }
+}

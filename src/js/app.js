@@ -1,3 +1,8 @@
 window.m = require('mithril');
 
-m.render(document.body, 'Welcome, Guest!');
+import Home from './components/landing';
+
+m.route.prefix('#');
+m.route(document.body, '', {
+    '': Home
+});
