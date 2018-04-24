@@ -1878,7 +1878,7 @@ var app = {
                     }
                 }
             }
-        }, [m('i.fas.fa-bars.fa-fw.fa-lg'), m('i.fas.fa-times.fa-fw.fa-lg')]), m('ul.nav-container.flex', [m('li.nav-text', m('a', { href: '#' }, m('span', 'Konjungsi'))), m('li.nav-text', m('a', { href: '#' }, m('span', 'Disjungsi'))), m('li.nav-text', m('a', { href: '#' }, m('span', 'Implikasi'))), m('li.nav-text', m('a', { href: '#' }, m('span', 'Biimplikasi'))), m('li.nav-text', m('a', { href: '#' }, m('span', 'Tabel Kebenaran')))]), m('.nav-cover', {
+        }, [m('i.fas.fa-bars.fa-fw.fa-lg'), m('i.fas.fa-times.fa-fw.fa-lg')]), m('ul.nav-container.flex', [m('li.nav-text', m('a', { href: '#' }, m('span', 'Negasi'))), m('li.nav-text', m('a', { href: '#' }, m('span', 'Konjungsi'))), m('li.nav-text', m('a', { href: '#' }, m('span', 'Disjungsi'))), m('li.nav-text', m('a', { href: '#' }, m('span', 'Implikasi'))), m('li.nav-text', m('a', { href: '#' }, m('span', 'Biimplikasi'))), m('li.nav-text', m('a', { href: '#' }, m('span', 'Manual'))), m('li.nav-text', m('a', { href: '#' }, m('span', 'Tabel Kebenaran')))]), m('.nav-cover', {
             onclick: function onclick(e) {
                 var next = document.querySelector('ul.nav-container');
                 if (next.classList) {

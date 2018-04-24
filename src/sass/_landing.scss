@@ -42,6 +42,7 @@
                 > a:hover,
                 > a:focus {
                     filter: invert(100%);
+                    border-bottom: .1rem solid;
                 }
             }
         }

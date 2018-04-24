@@ -88,6 +88,7 @@ a {
 .landing > header > .nav-container > .nav-text > a:focus {
   -webkit-filter: invert(100%);
           filter: invert(100%);
+  border-bottom: .1rem solid;
 }
 
 .landing > header > .nav-cover {
