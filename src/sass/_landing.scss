@@ -1,20 +1,26 @@
 
-.landing {
+.container {
     height: 100vh;
-    flex-flow: row wrap;
+    flex-flow: column;
 
     > header {
         background-color: $mainColor;
         padding: 1rem 3rem;
-        flex-grow: 1;
+        flex: 0 1 auto;
 
         > .title {
             align-items: center;
             flex: 0 1 auto;
 
-            > span:nth-child(1) {
+            > a {
                 font-size: x-large;
                 font-family: $titleFont;
+                transition: all .15s ease;
+            }
+
+            > a:hover,
+            > a:focus {
+                filter: invert(100%);
             }
         }
 
@@ -42,6 +48,11 @@
                 > a:hover,
                 > a:focus {
                     filter: invert(100%);
+                }
+
+                > a.active,
+                > a:hover,
+                > a:focus {
                     border-bottom: .1rem solid;
                 }
             }
@@ -58,12 +69,40 @@
         }
     }
 
-    > .landing-content {
+    > header.invert {
+        background-color: $secondColor;
+        color: $thirdColor;
+        box-shadow: 0 .05rem .15rem 0 #AAAAAA;
+
+        position: relative;
+        z-index: 5;
+
+        > .title {
+            > a:hover,
+            > a:focus {
+                filter: none;
+                color: $mainColor;
+            }
+        }
+
+        > .nav-container {
+            > .nav-text {
+                > a.active,
+                > a:focus,
+                > a:hover {
+                    filter: none;
+                    color: $mainColor;
+                }
+            }
+        }
+    }
+
+    > .content {
         background-color: $mainColor;
         padding: 3rem;
-        flex-grow: 1;
+        flex: 1 1 auto;
 
-        > .landing-title {
+        > .title {
             font-family: $bigFont;
             font-size: 5rem;
             margin-bottom: 3rem;
@@ -73,14 +112,18 @@
             }
         }
 
-        > .landing-desc {
+        > .desc {
             letter-spacing: .2rem;
         }
+    }
+
+    > .content.invert {
+        background-color: $secondColor;
     }
 }
 
 @media all and (max-width: 640px) {
-    .landing {
+    .container {
         > header {
             padding: 1rem;
 
@@ -121,10 +164,16 @@
 
             > .nav-container.active {
                 display: flex;
-                background-color: #FFFFFF;
+                background-color: $secondColor;
 
                 > .nav-text {
                     margin: .5rem 1rem;
+
+                    > a:hover,
+                    > a:focus {
+                        filter: none;
+                        color: $mainColor;
+                    }
                 }
             }
 
@@ -133,15 +182,15 @@
             }
         }
 
-        > .landing-content {
+        > .content {
             justify-content: center;
 
-            > .landing-title {
+            > .title {
                 text-align: center;
                 font-size: xx-large;
             }
 
-            > .landing-desc {
+            > .desc {
                 font-size: small;
             }
         }

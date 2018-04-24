@@ -1,8 +1,11 @@
 var app = {
-    view: () => {
-        return m('header.flex', [
+    view: (vnode) => {
+        return m('header.flex', { class: vnode.attrs.invert ? 'invert' : '' }, [
             m('.title.flex',
-                m('span', 'mathLogics')),
+                m('a', {
+                    href: '',
+                    oncreate: m.route.link
+                }, 'mathLogics')),
             m('.flex'),
             m('.nav-bar.flex', {
                 onclick: (e) => {
@@ -33,25 +36,53 @@ var app = {
             ]),
             m('ul.nav-container.flex', [
                 m('li.nav-text',
-                    m('a', { href: '#' },
+                    m('a', {
+                        href: '/negasi',
+                        oncreate: m.route.link,
+                        class: m.route.get() == '/negasi' ? 'active' : ''
+                    },
                         m('span', 'Negasi'))),
                 m('li.nav-text',
-                    m('a', { href: '#' },
+                    m('a', {
+                        href: '/konjungsi',
+                        oncreate: m.route.link,
+                        class: m.route.get() == '/konjungsi' ? 'active' : ''
+                    },
                         m('span', 'Konjungsi'))),
                 m('li.nav-text',
-                    m('a', { href: '#' },
+                    m('a', {
+                        href: '/disjungsi',
+                        oncreate: m.route.link,
+                        class: m.route.get() == '/disjungsi' ? 'active' : ''
+                    },
                         m('span', 'Disjungsi'))),
                 m('li.nav-text',
-                    m('a', { href: '#' },
+                    m('a', {
+                        href: '/implikasi',
+                        oncreate: m.route.link,
+                        class: m.route.get() == '/implikasi' ? 'active' : ''
+                    },
                         m('span', 'Implikasi'))),
                 m('li.nav-text',
-                    m('a', { href: '#' },
+                    m('a', {
+                        href: '/biimplikasi',
+                        oncreate: m.route.link,
+                        class: m.route.get() == '/biimplikasi' ? 'active' : ''
+                    },
                         m('span', 'Biimplikasi'))),
                 m('li.nav-text',
-                    m('a', { href: '#' },
+                    m('a', {
+                        href: '/manual',
+                        oncreate: m.route.link,
+                        class: m.route.get() == '/manual' ? 'active' : ''
+                    },
                         m('span', 'Manual'))),
                 m('li.nav-text',
-                    m('a', { href: '#' },
+                    m('a', {
+                        href: '/tabel',
+                        oncreate: m.route.link,
+                        class: m.route.get() == '/tabel' ? 'active' : ''
+                    },
                         m('span', 'Tabel Kebenaran'))),
             ]),
             m('.nav-cover', {

@@ -60,11 +60,99 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var app = {
+    view: function view(vnode) {
+        return m('header.flex', { class: vnode.attrs.invert ? 'invert' : '' }, [m('.title.flex', m('a', {
+            href: '',
+            oncreate: m.route.link
+        }, 'mathLogics')), m('.flex'), m('.nav-bar.flex', {
+            onclick: function onclick(e) {
+                var next = document.querySelector('ul.nav-container');
+                if (next.classList) {
+                    next.classList.toggle('active');
+                    next.previousSibling.classList.toggle('active');
+                } else {
+                    var nextCls = next.className.split(' '),
+                        eCls = next.previousSibling.className.split(' '),
+                        i = nextCls.indexOf('active');
+
+                    if (i >= 0) {
+                        nextCls.splice(i, 1);
+                        eCls.splice(i, 1);
+                    } else {
+                        nextCls.push('active');
+                        eCls.push('active');
+                        next.className = nextCls.join(' ');
+                        next.previousSibling.className = nextCls.join(' ');
+                    }
+                }
+            }
+        }, [m('i.fas.fa-bars.fa-fw.fa-lg'), m('i.fas.fa-times.fa-fw.fa-lg')]), m('ul.nav-container.flex', [m('li.nav-text', m('a', {
+            href: '/negasi',
+            oncreate: m.route.link,
+            class: m.route.get() == '/negasi' ? 'active' : ''
+        }, m('span', 'Negasi'))), m('li.nav-text', m('a', {
+            href: '/konjungsi',
+            oncreate: m.route.link,
+            class: m.route.get() == '/konjungsi' ? 'active' : ''
+        }, m('span', 'Konjungsi'))), m('li.nav-text', m('a', {
+            href: '/disjungsi',
+            oncreate: m.route.link,
+            class: m.route.get() == '/disjungsi' ? 'active' : ''
+        }, m('span', 'Disjungsi'))), m('li.nav-text', m('a', {
+            href: '/implikasi',
+            oncreate: m.route.link,
+            class: m.route.get() == '/implikasi' ? 'active' : ''
+        }, m('span', 'Implikasi'))), m('li.nav-text', m('a', {
+            href: '/biimplikasi',
+            oncreate: m.route.link,
+            class: m.route.get() == '/biimplikasi' ? 'active' : ''
+        }, m('span', 'Biimplikasi'))), m('li.nav-text', m('a', {
+            href: '/manual',
+            oncreate: m.route.link,
+            class: m.route.get() == '/manual' ? 'active' : ''
+        }, m('span', 'Manual'))), m('li.nav-text', m('a', {
+            href: '/tabel',
+            oncreate: m.route.link,
+            class: m.route.get() == '/tabel' ? 'active' : ''
+        }, m('span', 'Tabel Kebenaran')))]), m('.nav-cover', {
+            onclick: function onclick(e) {
+                var next = document.querySelector('ul.nav-container');
+                if (next.classList) {
+                    next.classList.toggle('active');
+                    next.previousSibling.classList.toggle('active');
+                } else {
+                    var nextCls = next.className.split(' '),
+                        eCls = next.previousSibling.className.split(' '),
+                        i = nextCls.indexOf('active');
+
+                    if (i >= 0) {
+                        nextCls.splice(i, 1);
+                        eCls.splice(i, 1);
+                    } else {
+                        nextCls.push('active');
+                        eCls.push('active');
+                        next.className = nextCls.join(' ');
+                        next.previousSibling.className = nextCls.join(' ');
+                    }
+                }
+            }
+        })]);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (app);
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
 var g;
@@ -91,31 +179,53 @@ module.exports = g;
 
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(2);
-module.exports = __webpack_require__(9);
+__webpack_require__(3);
+__webpack_require__(12);
+module.exports = __webpack_require__(13);
 
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_landing__ = __webpack_require__(7);
-window.m = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_landing__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_negasi__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_konjungsi__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_disjungsi__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_implikasi__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_biimplikasi__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_manual__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_tabel__ = __webpack_require__(38);
+window.m = __webpack_require__(4);
+
+
+
+
+
+
+
 
 
 
 m.route.prefix('#');
 m.route(document.body, '', {
-    '': __WEBPACK_IMPORTED_MODULE_0__components_landing__["a" /* default */]
+    '': __WEBPACK_IMPORTED_MODULE_0__components_landing__["a" /* default */],
+    '/negasi': __WEBPACK_IMPORTED_MODULE_1__components_negasi__["a" /* default */],
+    '/konjungsi': __WEBPACK_IMPORTED_MODULE_2__components_konjungsi__["a" /* default */],
+    '/disjungsi': __WEBPACK_IMPORTED_MODULE_3__components_disjungsi__["a" /* default */],
+    '/implikasi': __WEBPACK_IMPORTED_MODULE_4__components_implikasi__["a" /* default */],
+    '/biimplikasi': __WEBPACK_IMPORTED_MODULE_5__components_biimplikasi__["a" /* default */],
+    '/manual': __WEBPACK_IMPORTED_MODULE_6__components_manual__["a" /* default */],
+    '/tabel': __WEBPACK_IMPORTED_MODULE_7__components_tabel__["a" /* default */]
 });
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate, global) {;(function() {
@@ -1375,10 +1485,10 @@ m.vnode = Vnode
 if (true) module["exports"] = m
 else window.m = m
 }());
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4).setImmediate, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5).setImmediate, __webpack_require__(1)))
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -1434,7 +1544,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(5);
+__webpack_require__(6);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -1445,10 +1555,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (typeof global !== "undefined" && global.clearImmediate) ||
                          (this && this.clearImmediate);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -1638,10 +1748,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(7)))
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -1831,17 +1941,17 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
 
 
 
 var app = {
     view: function view() {
-        return m('.landing.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */]), m('.landing-content', [m('.landing-title', [m('.title-text', 'LEARN'), m('.title-text', 'MATH LOGICS'), m('.title-text.invert', 'THROUGH'), m('.title-text.invert', 'WEB APPLICATION')]), m('.landing-desc', m('span', 'Pelajari logika matematika\
+        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */]), m('.content', [m('.title', [m('.title-text', 'LEARN'), m('.title-text', 'MATH LOGICS'), m('.title-text.invert', 'THROUGH'), m('.title-text.invert', 'WEB APPLICATION')]), m('.desc', m('span', 'Pelajari logika matematika\
                                 serta lakukan perhitungan\
                                 melalui aplikasi ini.'))])]);
     }
@@ -1850,67 +1960,168 @@ var app = {
 /* harmony default export */ __webpack_exports__["a"] = (app);
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+
+
+
 var app = {
     view: function view() {
-        return m('header.flex', [m('.title.flex', m('span', 'mathLogics')), m('.flex'), m('.nav-bar.flex', {
-            onclick: function onclick(e) {
-                var next = document.querySelector('ul.nav-container');
-                if (next.classList) {
-                    next.classList.toggle('active');
-                    next.previousSibling.classList.toggle('active');
-                } else {
-                    var nextCls = next.className.split(' '),
-                        eCls = next.previousSibling.className.split(' '),
-                        i = nextCls.indexOf('active');
-
-                    if (i >= 0) {
-                        nextCls.splice(i, 1);
-                        eCls.splice(i, 1);
-                    } else {
-                        nextCls.push('active');
-                        eCls.push('active');
-                        next.className = nextCls.join(' ');
-                        next.previousSibling.className = nextCls.join(' ');
-                    }
-                }
-            }
-        }, [m('i.fas.fa-bars.fa-fw.fa-lg'), m('i.fas.fa-times.fa-fw.fa-lg')]), m('ul.nav-container.flex', [m('li.nav-text', m('a', { href: '#' }, m('span', 'Negasi'))), m('li.nav-text', m('a', { href: '#' }, m('span', 'Konjungsi'))), m('li.nav-text', m('a', { href: '#' }, m('span', 'Disjungsi'))), m('li.nav-text', m('a', { href: '#' }, m('span', 'Implikasi'))), m('li.nav-text', m('a', { href: '#' }, m('span', 'Biimplikasi'))), m('li.nav-text', m('a', { href: '#' }, m('span', 'Manual'))), m('li.nav-text', m('a', { href: '#' }, m('span', 'Tabel Kebenaran')))]), m('.nav-cover', {
-            onclick: function onclick(e) {
-                var next = document.querySelector('ul.nav-container');
-                if (next.classList) {
-                    next.classList.toggle('active');
-                    next.previousSibling.classList.toggle('active');
-                } else {
-                    var nextCls = next.className.split(' '),
-                        eCls = next.previousSibling.className.split(' '),
-                        i = nextCls.indexOf('active');
-
-                    if (i >= 0) {
-                        nextCls.splice(i, 1);
-                        eCls.splice(i, 1);
-                    } else {
-                        nextCls.push('active');
-                        eCls.push('active');
-                        next.className = nextCls.join(' ');
-                        next.previousSibling.className = nextCls.join(' ');
-                    }
-                }
-            }
-        })]);
+        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', [m('.title', m('.title-text', 'NEGASI')), m('.desc', m('span', 'Negasi (ingkaran) adalah\
+                                pernyataan yang menyangkal\
+                                pernyataan yang diberikan\
+                                (lawan dari pernyataan yang diberikan).'))])]);
     }
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (app);
 
 /***/ }),
-/* 9 */
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+
+
+
+var app = {
+    view: function view() {
+        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', [m('.title', m('.title-text', 'KONJUNGSI')), m('.desc', m('span', 'Konjungsi (dan) adalah pernyataan majemuk\
+                                yang hanya akan bernilai benar jika\
+                                kedua pernyataan bernilai benar.'))])]);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (app);
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+
+
+
+var app = {
+    view: function view() {
+        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', [m('.title', m('.title-text', 'DISJUNGSI')), m('.desc', m('span', 'Disjungsi (atau) adalah pernyataan majemuk\
+                                yang hanya akan bernilai benar jika\
+                                salah satu pernyataan bernilai benar.'))])]);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (app);
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+
+
+
+var app = {
+    view: function view() {
+        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', [m('.title', m('.title-text', 'IMPLIKASI')), m('.desc', m('span', 'Implikasi (jika, maka) adalah pernyataan majemuk\
+                                yang hanya akan bernilai salah jika\
+                                pernyataan pertama benar dan\
+                                pernyataan ke-dua bernilai salah.'))])]);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (app);
+
+/***/ }),
+/* 36 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+
+
+
+var app = {
+    view: function view() {
+        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', [m('.title', m('.title-text', 'BIIMPLIKASI')), m('.desc', m('span', 'Biimplikasi (jika dan hanya jika) adalah pernyataan majemuk\
+                                yang hanya akan bernilai benar jika\
+                                kedua pernyataan bernilai sama (benar/salah).'))])]);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (app);
+
+/***/ }),
+/* 37 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+
+
+
+var app = {
+    view: function view() {
+        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', [m('.title', m('.title-text', 'MANUAL')), m('.desc', m('span', 'Tentukan hasil dari pernyataan yang Anda tulis sendiri.'))])]);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (app);
+
+/***/ }),
+/* 38 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+
+
+
+var app = {
+    view: function view() {
+        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', [m('.title', m('.title-text', 'TABEL KEBENARAN'))])]);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (app);
 
 /***/ })
 /******/ ]);

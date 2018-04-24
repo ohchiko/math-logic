@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700);@import url(https://fonts.googleapis.com/css?family=Satisfy);@import url(https://fonts.googleapis.com/css?family=Raleway:900);body {
+body {
   margin: 0;
   padding: 0;
   font-family: "Roboto Condensed", sans-serif;
@@ -20,23 +20,23 @@ a {
   text-decoration: none;
 }
 
-.landing {
+.container {
   height: 100vh;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
+      -ms-flex-flow: column;
+          flex-flow: column;
 }
 
-.landing > header {
+.container > header {
   background-color: turquoise;
   padding: 1rem 3rem;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
 }
 
-.landing > header > .title {
+.container > header > .title {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -45,12 +45,20 @@ a {
           flex: 0 1 auto;
 }
 
-.landing > header > .title > span:nth-child(1) {
+.container > header > .title > a {
   font-size: x-large;
   font-family: "Satisfy", cursive;
+  -webkit-transition: all .15s ease;
+  transition: all .15s ease;
 }
 
-.landing > header > .nav-bar {
+.container > header > .title > a:hover,
+.container > header > .title > a:focus {
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
+}
+
+.container > header > .nav-bar {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 auto;
           flex: 0 1 auto;
@@ -60,7 +68,7 @@ a {
   display: none;
 }
 
-.landing > header > .nav-container {
+.container > header > .nav-container {
   -webkit-box-pack: right;
       -ms-flex-pack: right;
           justify-content: right;
@@ -75,23 +83,28 @@ a {
   padding: 0;
 }
 
-.landing > header > .nav-container > .nav-text {
+.container > header > .nav-container > .nav-text {
   margin: 0 1rem;
 }
 
-.landing > header > .nav-container > .nav-text > a {
+.container > header > .nav-container > .nav-text > a {
   -webkit-transition: all .15s ease;
   transition: all .15s ease;
 }
 
-.landing > header > .nav-container > .nav-text > a:hover,
-.landing > header > .nav-container > .nav-text > a:focus {
+.container > header > .nav-container > .nav-text > a:hover,
+.container > header > .nav-container > .nav-text > a:focus {
   -webkit-filter: invert(100%);
           filter: invert(100%);
+}
+
+.container > header > .nav-container > .nav-text > a.active,
+.container > header > .nav-container > .nav-text > a:hover,
+.container > header > .nav-container > .nav-text > a:focus {
   border-bottom: .1rem solid;
 }
 
-.landing > header > .nav-cover {
+.container > header > .nav-cover {
   display: none;
   position: fixed;
   top: 0;
@@ -101,66 +114,94 @@ a {
   z-index: 4;
 }
 
-.landing > .landing-content {
+.container > header.invert {
+  background-color: white;
+  color: black;
+  -webkit-box-shadow: 0 .05rem .15rem 0 #AAAAAA;
+          box-shadow: 0 .05rem .15rem 0 #AAAAAA;
+  position: relative;
+  z-index: 5;
+}
+
+.container > header.invert > .title > a:hover,
+.container > header.invert > .title > a:focus {
+  -webkit-filter: none;
+          filter: none;
+  color: turquoise;
+}
+
+.container > header.invert > .nav-container > .nav-text > a.active,
+.container > header.invert > .nav-container > .nav-text > a:focus,
+.container > header.invert > .nav-container > .nav-text > a:hover {
+  -webkit-filter: none;
+          filter: none;
+  color: turquoise;
+}
+
+.container > .content {
   background-color: turquoise;
   padding: 3rem;
   -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 
-.landing > .landing-content > .landing-title {
+.container > .content > .title {
   font-family: "Raleway", sans-serif;
   font-size: 5rem;
   margin-bottom: 3rem;
 }
 
-.landing > .landing-content > .landing-title > .title-text.invert {
+.container > .content > .title > .title-text.invert {
   -webkit-filter: invert(100%);
           filter: invert(100%);
 }
 
-.landing > .landing-content > .landing-desc {
+.container > .content > .desc {
   letter-spacing: .2rem;
 }
 
+.container > .content.invert {
+  background-color: white;
+}
+
 @media all and (max-width: 640px) {
-  .landing > header {
+  .container > header {
     padding: 1rem;
   }
 
-  .landing > header > .nav-bar {
+  .container > header > .nav-bar {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
   }
 
-  .landing > header > .nav-bar > i {
+  .container > header > .nav-bar > i {
     cursor: pointer;
     -webkit-transition: all .15s ease-out;
     transition: all .15s ease-out;
   }
 
-  .landing > header > .nav-bar > i:nth-child(2) {
+  .container > header > .nav-bar > i:nth-child(2) {
     -webkit-transform: rotate(-90deg);
             transform: rotate(-90deg);
     opacity: 0;
     position: absolute;
   }
 
-  .landing > header > .nav-bar.active > i:nth-child(1) {
+  .container > header > .nav-bar.active > i:nth-child(1) {
     -webkit-transform: rotate(90deg);
             transform: rotate(90deg);
     opacity: 0;
   }
 
-  .landing > header > .nav-bar.active > i:nth-child(2) {
+  .container > header > .nav-bar.active > i:nth-child(2) {
     -webkit-transform: rotate(0);
             transform: rotate(0);
     opacity: 1;
   }
 
-  .landing > header > .nav-container {
+  .container > header > .nav-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-flow: column wrap;
@@ -174,33 +215,40 @@ a {
             box-shadow: 0 .15rem .15rem 0 #AAAAAA;
   }
 
-  .landing > header > .nav-container.active {
+  .container > header > .nav-container.active {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    background-color: #FFFFFF;
+    background-color: white;
   }
 
-  .landing > header > .nav-container.active > .nav-text {
+  .container > header > .nav-container.active > .nav-text {
     margin: .5rem 1rem;
   }
 
-  .landing > header > .nav-container.active + .nav-cover {
+  .container > header > .nav-container.active > .nav-text > a:hover,
+  .container > header > .nav-container.active > .nav-text > a:focus {
+    -webkit-filter: none;
+            filter: none;
+    color: turquoise;
+  }
+
+  .container > header > .nav-container.active + .nav-cover {
     display: block;
   }
 
-  .landing > .landing-content {
+  .container > .content {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
   }
 
-  .landing > .landing-content > .landing-title {
+  .container > .content > .title {
     text-align: center;
     font-size: xx-large;
   }
 
-  .landing > .landing-content > .landing-desc {
+  .container > .content > .desc {
     font-size: small;
   }
 }
