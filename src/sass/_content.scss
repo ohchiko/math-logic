@@ -116,6 +116,7 @@
 
         > .calculator {
             margin-top: 2rem;
+            flex-direction: column;
 
             > form {
                 width: 100%;
@@ -146,7 +147,7 @@
             }
 
             > .modes {
-                max-width: 50%;
+                // max-width: 50%;
                 margin-top: 1rem;
 
                 > .mode {
@@ -323,18 +324,17 @@
 
             > .calculator {
                 display: flex;
-                flex-flow: row wrap;
+                // flex-flow: row wrap;
                 justify-content: center;
 
                 > form {
+                    flex-flow: row wrap;
+
                     > input,
                     > .separator,
                     > button {
+                        flex-basis: 100%;
                         margin: .5rem 0;
-                    }
-
-                    > input {
-                        flex-grow: 1;
                     }
                 }
 
@@ -342,7 +342,7 @@
                     flex-direction: row;
                     padding: 1rem 0;
                     overflow-x: auto;
-                    max-width: 100%;
+                    // max-width: 100%;
 
                     > .mode {
                         margin: 0;
