@@ -97,7 +97,6 @@
     }
 
     > .content {
-        // background-color: $mainColor;
         padding: 3rem;
         flex: 1 1 auto;
 
@@ -124,14 +123,10 @@
                 flex-basis: 100%;
 
                 > input {
-                    flex-grow: 0;
+                    flex-grow: 4;
                     margin-right: 1rem;
                     padding: 1rem;
                     font-size: inherit;
-                }
-
-                > input:nth-child(3) {
-                    flex-grow: 4;
                 }
 
                 > .separator {

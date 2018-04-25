@@ -180,18 +180,12 @@ button {
 }
 
 .container > .content > .calculator > form > input {
-  -webkit-box-flex: 0;
-      -ms-flex-positive: 0;
-          flex-grow: 0;
-  margin-right: 1rem;
-  padding: 1rem;
-  font-size: inherit;
-}
-
-.container > .content > .calculator > form > input:nth-child(3) {
   -webkit-box-flex: 4;
       -ms-flex-positive: 4;
           flex-grow: 4;
+  margin-right: 1rem;
+  padding: 1rem;
+  font-size: inherit;
 }
 
 .container > .content > .calculator > form > .separator {

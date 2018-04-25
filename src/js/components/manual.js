@@ -39,7 +39,8 @@ var app = {
                             placeholder: 'p (co. 1|benar|true|...)',
                             required: 'required',
                             autocomplete: 'off',
-                            autofocus: 'autofocus'
+                            autofocus: 'autofocus',
+                            style: { flexGrow: '0' }
                         }),
                         m('input', {
                             type: 'text',
@@ -47,7 +48,8 @@ var app = {
                             placeholder: 'q (co. 1|benar|true|...)',
                             required: 'required',
                             autocomplete: 'off',
-                            autofocus: 'autofocus'
+                            autofocus: 'autofocus',
+                            style: { flexGrow: '0' }
                         }),
                         m('input', {
                             type: 'text',
