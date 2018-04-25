@@ -131,7 +131,15 @@ var app = {
             href: '/tabel',
             oncreate: m.route.link,
             class: m.route.get().includes('/tabel') ? 'active' : ''
-        }, m('span', 'Tabel Kebenaran')))]), m('.nav-cover', {
+        }, m('span', 'Tabel Kebenaran'))), m('li.nav-text', m('a', {
+            href: 'https://github.com/ohchiko/math-logic',
+            target: '_blank',
+            onclick: function onclick(e) {
+                e.preventDefault();
+                var win = window.open('https://github.com/ohchiko/math-logic', '_blank');
+                win ? win.focus() : alert('Please allow popups for this application.');
+            }
+        }, m('span', m('i.fab.fa-github.fa-fw'))))]), m('.nav-cover', {
             onclick: function onclick(e) {
                 var next = document.querySelector('ul.nav-container');
                 if (next.classList) {
@@ -281,8 +289,8 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(5);
-__webpack_require__(21);
-module.exports = __webpack_require__(22);
+__webpack_require__(22);
+module.exports = __webpack_require__(23);
 
 
 /***/ }),
@@ -2060,8 +2068,8 @@ var app = function app() {
         opReg = /[\^|v|\=\>|\<\=\>]+/;
 
     for (var i = 0; i < arguments.length; i++) {
-        arguments[i] = arguments[i].toLowerCase().replace(/benar|true|t|b/, '1');
-        arguments[i] = arguments[i].toLowerCase().replace(/salah|false|f|s/, '0');
+        arguments[i] = arguments[i].toLowerCase().replace(/benar|true|t|b/g, '1');
+        arguments[i] = arguments[i].toLowerCase().replace(/salah|false|f|s/g, '0');
     }
     if (arguments.length > 1) {
         var a = arguments[0],
@@ -2489,7 +2497,14 @@ var app = {
             onsubmit: function onsubmit(e) {
                 e.preventDefault();
 
-                var result = handle(e.target.elements.stm.value);
+                var stm = e.target.elements.stm.value,
+                    p = e.target.elements.p.value,
+                    q = e.target.elements.q.value;
+
+                stm = stm.replace(/p/g, p);
+                stm = stm.replace(/q/g, q);
+
+                var result = handle(stm);
                 if (vnode.attrs.mode) {
                     result = convert(result, vnode.attrs.mode);
                 }
@@ -2497,8 +2512,22 @@ var app = {
             }
         }, [m('input', {
             type: 'text',
+            name: 'p',
+            placeholder: 'p (co. 1|benar|true|...)',
+            required: 'required',
+            autocomplete: 'off',
+            autofocus: 'autofocus'
+        }), m('input', {
+            type: 'text',
+            name: 'q',
+            placeholder: 'q (co. 1|benar|true|...)',
+            required: 'required',
+            autocomplete: 'off',
+            autofocus: 'autofocus'
+        }), m('input', {
+            type: 'text',
             name: 'stm',
-            placeholder: 'Pernyataan (co. 1|benar|true|...)',
+            placeholder: 'Pernyataan (co. p^q|p=>~q|...)',
             required: 'required',
             autocomplete: 'off'
         }), m('button', { type: 'submit' }, 'Result')]), m(__WEBPACK_IMPORTED_MODULE_1__modes__["a" /* default */], vnode.attrs), m(__WEBPACK_IMPORTED_MODULE_2__result__["a" /* default */])])])]);
@@ -2513,7 +2542,7 @@ var app = {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_tables_json__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_tables_json__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_tables_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__core_tables_json__);
 
 
@@ -2568,7 +2597,7 @@ var app = {
 /* 21 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = {"konjungsi":{"prefix":"^","values":[["B","B","B"],["B","S","S"],["S","B","S"],["S","S","S"]]},"disjungsi":{"prefix":"v","values":[["B","B","B"],["B","S","B"],["S","B","B"],["S","S","S"]]},"implikasi":{"prefix":"=>","values":[["B","B","B"],["B","S","S"],["S","B","B"],["S","S","B"]]},"biimplikasi":{"prefix":"<=>","values":[["B","B","B"],["B","S","S"],["S","B","S"],["S","S","B"]]}}
 
 /***/ }),
 /* 22 */
@@ -2577,15 +2606,10 @@ var app = {
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */
+/* 23 */
 /***/ (function(module, exports) {
 
-module.exports = {"konjungsi":{"prefix":"^","values":[["B","B","B"],["B","S","S"],["S","B","S"],["S","S","S"]]},"disjungsi":{"prefix":"v","values":[["B","B","B"],["B","S","B"],["S","B","B"],["S","S","S"]]},"implikasi":{"prefix":"=>","values":[["B","B","B"],["B","S","S"],["S","B","B"],["S","S","B"]]},"biimplikasi":{"prefix":"<=>","values":[["B","B","B"],["B","S","S"],["S","B","S"],["S","S","B"]]}}
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

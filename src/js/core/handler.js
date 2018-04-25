@@ -12,8 +12,8 @@ const app = function () {
         opReg = /[\^|v|\=\>|\<\=\>]+/;
 
     for (var i = 0; i < arguments.length; i++) {
-        arguments[i] = arguments[i].toLowerCase().replace(/benar|true|t|b/, '1');
-        arguments[i] = arguments[i].toLowerCase().replace(/salah|false|f|s/, '0');
+        arguments[i] = arguments[i].toLowerCase().replace(/benar|true|t|b/g, '1');
+        arguments[i] = arguments[i].toLowerCase().replace(/salah|false|f|s/g, '0');
     }
     if (arguments.length > 1) {
         var a = arguments[0],

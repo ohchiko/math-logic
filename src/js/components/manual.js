@@ -19,7 +19,14 @@ var app = {
                         onsubmit: (e) => {
                             e.preventDefault();
 
-                            let result = handle(e.target.elements.stm.value);
+                            var stm = e.target.elements.stm.value,
+                                p = e.target.elements.p.value,
+                                q = e.target.elements.q.value;
+
+                            stm = stm.replace(/p/g, p);
+                            stm = stm.replace(/q/g, q);
+
+                            let result = handle(stm);
                             if (vnode.attrs.mode) {
                                 result = convert(result, vnode.attrs.mode);
                             }
@@ -28,8 +35,24 @@ var app = {
                     }, [
                         m('input', {
                             type: 'text',
+                            name: 'p',
+                            placeholder: 'p (co. 1|benar|true|...)',
+                            required: 'required',
+                            autocomplete: 'off',
+                            autofocus: 'autofocus'
+                        }),
+                        m('input', {
+                            type: 'text',
+                            name: 'q',
+                            placeholder: 'q (co. 1|benar|true|...)',
+                            required: 'required',
+                            autocomplete: 'off',
+                            autofocus: 'autofocus'
+                        }),
+                        m('input', {
+                            type: 'text',
                             name: 'stm',
-                            placeholder: 'Pernyataan (co. 1|benar|true|...)',
+                            placeholder: 'Pernyataan (co. p^q|p=>~q|...)',
                             required: 'required',
                             autocomplete: 'off'
                         }),

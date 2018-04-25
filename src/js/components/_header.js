@@ -88,6 +88,17 @@ var app = {
                         class: m.route.get().includes('/tabel') ? 'active' : ''
                     },
                         m('span', 'Tabel Kebenaran'))),
+                m('li.nav-text',
+                    m('a', {
+                        href: 'https://github.com/ohchiko/math-logic',
+                        target: '_blank',
+                        onclick: (e) => {
+                            e.preventDefault();
+                            var win = window.open('https://github.com/ohchiko/math-logic', '_blank');
+                            win ? win.focus() : alert('Please allow popups for this application.');
+                        }
+                    },
+                        m('span', m('i.fab.fa-github.fa-fw'))))
             ]),
             m('.nav-cover', {
                 onclick: (e) => {
