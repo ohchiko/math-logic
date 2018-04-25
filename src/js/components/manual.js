@@ -6,8 +6,10 @@ import Result from './_result';
 var app = {
     view: (vnode) => {
         return m('.container.flex', [
-            m(Header, {invert: true}),
-            m('.content', [
+            m(Header, { invert: true }),
+            m('.content', {
+                style: { backgroundColor: randomizeColor() }
+            }, [
                 m('.title',
                     m('.title-text', 'MANUAL')),
                 m('.desc',

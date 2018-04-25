@@ -2,6 +2,18 @@
 window.m = require('mithril');
 window.handle = require('./core/handler').default;
 window.convert = require('./core/converter').default;
+window.colors = [
+    'turquoise',
+    'thistle',
+    'tan',
+    'silver',
+    'lightseagreen',
+    'lightgrey',
+    'antiquewhite'
+];
+window.randomizeColor = () => {
+    return colors[Math.floor(Math.random() * colors.length)];
+}
 
 import Home from './components/landing';
 import Negasi from './components/negasi';

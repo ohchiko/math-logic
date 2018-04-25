@@ -5,7 +5,9 @@ var app = {
     view: () => {
         return m('.container.flex', [
             m(Header),
-            m('.content', [
+            m('.content', {
+                style: { backgroundColor: randomizeColor() }
+            }, [
                 m('.title', [
                     m('.title-text', 'LEARN'),
                     m('.title-text', 'MATH LOGICS'),

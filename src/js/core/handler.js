@@ -12,18 +12,13 @@ const app = function () {
         opReg = /[\^|v|\=\>|\<\=\>]+/;
 
     for (var i = 0; i < arguments.length; i++) {
-        arguments[i] = arguments[i].replace(/benar|true|t|b/, '1');
-        arguments[i] = arguments[i].replace(/salah|false|f|s/, '0');
+        arguments[i] = arguments[i].toLowerCase().replace(/benar|true|t|b/, '1');
+        arguments[i] = arguments[i].toLowerCase().replace(/salah|false|f|s/, '0');
     }
     if (arguments.length > 1) {
-        var a = arguments[0].toLowerCase(),
-            b = arguments[1].toLowerCase(),
+        var a = arguments[0],
+            b = arguments[1],
             op = arguments[2];
-
-        a = a.replace(/benar|true|t|b/, '1');
-        a = a.replace(/salah|false|f|s/, '1');
-        b = b.replace(/benar|true|t|b/, '1');
-        b = b.replace(/salah|false|f|s/, '1');
 
         a = checkNegate(a);
         b = checkNegate(b);
@@ -35,8 +30,6 @@ const app = function () {
 
         str = operate(a, b, op);
     } else {
-        arguments[0] = arguments[0].toLowerCase().replace(/benar|true|t|b/, '1');
-        arguments[0] = arguments[0].toLowerCase().replace(/salah|false|f|s/, '0');
         str = arguments[0];
 
         str = checkNegate(str);

@@ -64,7 +64,102 @@
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */,
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var app = {
+    view: function view(vnode) {
+        return m('header.flex', {
+            class: vnode.attrs.invert ? 'invert' : '',
+            oncreate: function oncreate(e) {
+                return e.dom.style.backgroundColor = document.querySelector('.content').style.backgroundColor;
+            },
+            onupdate: function onupdate(e) {
+                return e.dom.style.backgroundColor = document.querySelector('.content').style.backgroundColor;
+            }
+        }, [m('.title.flex', m('a', {
+            href: '',
+            oncreate: m.route.link
+        }, 'mathLogics')), m('.flex'), m('.nav-bar.flex', {
+            onclick: function onclick(e) {
+                var next = document.querySelector('ul.nav-container');
+                if (next.classList) {
+                    next.classList.toggle('active');
+                    next.previousSibling.classList.toggle('active');
+                } else {
+                    var nextCls = next.className.split(' '),
+                        eCls = next.previousSibling.className.split(' '),
+                        i = nextCls.indexOf('active');
+
+                    if (i >= 0) {
+                        nextCls.splice(i, 1);
+                        eCls.splice(i, 1);
+                    } else {
+                        nextCls.push('active');
+                        eCls.push('active');
+                        next.className = nextCls.join(' ');
+                        next.previousSibling.className = nextCls.join(' ');
+                    }
+                }
+            }
+        }, [m('i.fas.fa-bars.fa-fw.fa-lg'), m('i.fas.fa-times.fa-fw.fa-lg')]), m('ul.nav-container.flex', [m('li.nav-text', m('a', {
+            href: '/negasi',
+            oncreate: m.route.link,
+            class: m.route.get().includes('/negasi') ? 'active' : ''
+        }, m('span', 'Negasi'))), m('li.nav-text', m('a', {
+            href: '/konjungsi',
+            oncreate: m.route.link,
+            class: m.route.get().includes('/konjungsi') ? 'active' : ''
+        }, m('span', 'Konjungsi'))), m('li.nav-text', m('a', {
+            href: '/disjungsi',
+            oncreate: m.route.link,
+            class: m.route.get().includes('/disjungsi') ? 'active' : ''
+        }, m('span', 'Disjungsi'))), m('li.nav-text', m('a', {
+            href: '/implikasi',
+            oncreate: m.route.link,
+            class: m.route.get().includes('/implikasi') ? 'active' : ''
+        }, m('span', 'Implikasi'))), m('li.nav-text', m('a', {
+            href: '/biimplikasi',
+            oncreate: m.route.link,
+            class: m.route.get().includes('/biimplikasi') ? 'active' : ''
+        }, m('span', 'Biimplikasi'))), m('li.nav-text', m('a', {
+            href: '/manual',
+            oncreate: m.route.link,
+            class: m.route.get().includes('/manual') ? 'active' : ''
+        }, m('span', 'Manual'))), m('li.nav-text', m('a', {
+            href: '/tabel',
+            oncreate: m.route.link,
+            class: m.route.get().includes('/tabel') ? 'active' : ''
+        }, m('span', 'Tabel Kebenaran')))]), m('.nav-cover', {
+            onclick: function onclick(e) {
+                var next = document.querySelector('ul.nav-container');
+                if (next.classList) {
+                    next.classList.toggle('active');
+                    next.previousSibling.classList.toggle('active');
+                } else {
+                    var nextCls = next.className.split(' '),
+                        eCls = next.previousSibling.className.split(' '),
+                        i = nextCls.indexOf('active');
+
+                    if (i >= 0) {
+                        nextCls.splice(i, 1);
+                        eCls.splice(i, 1);
+                    } else {
+                        nextCls.push('active');
+                        eCls.push('active');
+                        next.className = nextCls.join(' ');
+                        next.previousSibling.className = nextCls.join(' ');
+                    }
+                }
+            }
+        })]);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (app);
+
+/***/ }),
 /* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -208,6 +303,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 window.m = __webpack_require__(6);
 window.handle = __webpack_require__(10).default;
 window.convert = __webpack_require__(12).default;
+window.colors = ['turquoise', 'thistle', 'tan', 'silver', 'lightseagreen', 'lightgrey', 'antiquewhite'];
+window.randomizeColor = function () {
+    return colors[Math.floor(Math.random() * colors.length)];
+};
 
 
 
@@ -1275,9 +1374,9 @@ var _16 = function(redrawService0) {
 			redrawService0.unsubscribe(root)
 			return
 		}
-
+		
 		if (component.view == null && typeof component !== "function") throw new Error("m.mount(element, component) expects a component, not a vnode")
-
+		
 		var run0 = function() {
 			redrawService0.render(root, Vnode(component))
 		}
@@ -1961,18 +2060,13 @@ var app = function app() {
         opReg = /[\^|v|\=\>|\<\=\>]+/;
 
     for (var i = 0; i < arguments.length; i++) {
-        arguments[i] = arguments[i].replace(/benar|true|t|b/, '1');
-        arguments[i] = arguments[i].replace(/salah|false|f|s/, '0');
+        arguments[i] = arguments[i].toLowerCase().replace(/benar|true|t|b/, '1');
+        arguments[i] = arguments[i].toLowerCase().replace(/salah|false|f|s/, '0');
     }
     if (arguments.length > 1) {
-        var a = arguments[0].toLowerCase(),
-            b = arguments[1].toLowerCase(),
+        var a = arguments[0],
+            b = arguments[1],
             op = arguments[2];
-
-        a = a.replace(/benar|true|t|b/, '1');
-        a = a.replace(/salah|false|f|s/, '1');
-        b = b.replace(/benar|true|t|b/, '1');
-        b = b.replace(/salah|false|f|s/, '1');
 
         a = checkNegate(a);
         b = checkNegate(b);
@@ -1984,8 +2078,6 @@ var app = function app() {
 
         str = operate(a, b, op);
     } else {
-        arguments[0] = arguments[0].toLowerCase().replace(/benar|true|t|b/, '1');
-        arguments[0] = arguments[0].toLowerCase().replace(/salah|false|f|s/, '0');
         str = arguments[0];
 
         str = checkNegate(str);
@@ -2129,13 +2221,15 @@ var convert = function convert(from, to) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
 
 
 
 var app = {
     view: function view() {
-        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */]), m('.content', [m('.title', [m('.title-text', 'LEARN'), m('.title-text', 'MATH LOGICS'), m('.title-text.invert', 'THROUGH'), m('.title-text.invert', 'WEB APPLICATION')]), m('.desc', m('span', 'Pelajari logika matematika\
+        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */]), m('.content', {
+            style: { backgroundColor: randomizeColor() }
+        }, [m('.title', [m('.title-text', 'LEARN'), m('.title-text', 'MATH LOGICS'), m('.title-text.invert', 'THROUGH'), m('.title-text.invert', 'WEB APPLICATION')]), m('.desc', m('span', 'Pelajari logika matematika\
                                 serta lakukan penghitungan\
                                 melalui aplikasi ini.'))])]);
     }
@@ -2158,7 +2252,9 @@ var app = {
 
 var app = {
     view: function view(vnode) {
-        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', [m('.title', m('.title-text', 'NEGASI')), m('.desc', m('span', 'Negasi (ingkaran) adalah\
+        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', {
+            style: { backgroundColor: randomizeColor() }
+        }, [m('.title', m('.title-text', 'NEGASI')), m('.desc', m('span', 'Negasi (ingkaran) adalah\
                                 pernyataan yang menyangkal\
                                 pernyataan yang diberikan\
                                 (lawan dari pernyataan yang diberikan).')), m('.calculator', [m('form.flex', {
@@ -2198,7 +2294,9 @@ var app = {
 
 var app = {
     view: function view(vnode) {
-        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', [m('.title', m('.title-text', 'KONJUNGSI')), m('.desc', m('span', 'Konjungsi (dan) adalah pernyataan majemuk\
+        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', {
+            style: { backgroundColor: randomizeColor() }
+        }, [m('.title', m('.title-text', 'KONJUNGSI')), m('.desc', m('span', 'Konjungsi (dan) adalah pernyataan majemuk\
                                 yang hanya akan bernilai benar jika\
                                 kedua pernyataan bernilai benar.')), m('.calculator', [m('form.flex', {
             onsubmit: function onsubmit(e) {
@@ -2243,7 +2341,9 @@ var app = {
 
 var app = {
     view: function view(vnode) {
-        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', [m('.title', m('.title-text', 'DISJUNGSI')), m('.desc', m('span', 'Disjungsi (atau) adalah pernyataan majemuk\
+        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', {
+            style: { backgroundColor: randomizeColor() }
+        }, [m('.title', m('.title-text', 'DISJUNGSI')), m('.desc', m('span', 'Disjungsi (atau) adalah pernyataan majemuk\
                                 yang hanya akan bernilai benar jika\
                                 salah satu pernyataan bernilai benar.')), m('.calculator', [m('form.flex', {
             onsubmit: function onsubmit(e) {
@@ -2288,7 +2388,9 @@ var app = {
 
 var app = {
     view: function view(vnode) {
-        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', [m('.title', m('.title-text', 'IMPLIKASI')), m('.desc', m('span', 'Implikasi (jika, maka) adalah pernyataan majemuk\
+        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', {
+            style: { backgroundColor: randomizeColor() }
+        }, [m('.title', m('.title-text', 'IMPLIKASI')), m('.desc', m('span', 'Implikasi (jika, maka) adalah pernyataan majemuk\
                                 yang hanya akan bernilai salah jika\
                                 pernyataan pertama benar dan\
                                 pernyataan ke-dua bernilai salah.')), m('.calculator', [m('form.flex', {
@@ -2334,7 +2436,9 @@ var app = {
 
 var app = {
     view: function view(vnode) {
-        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', [m('.title', m('.title-text', 'BIIMPLIKASI')), m('.desc', m('span', 'Biimplikasi (jika dan hanya jika) adalah pernyataan majemuk\
+        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', {
+            style: { backgroundColor: randomizeColor() }
+        }, [m('.title', m('.title-text', 'BIIMPLIKASI')), m('.desc', m('span', 'Biimplikasi (jika dan hanya jika) adalah pernyataan majemuk\
                                 yang hanya akan bernilai benar jika\
                                 kedua pernyataan bernilai sama (benar/salah).')), m('.calculator', [m('form.flex', {
             onsubmit: function onsubmit(e) {
@@ -2379,7 +2483,9 @@ var app = {
 
 var app = {
     view: function view(vnode) {
-        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', [m('.title', m('.title-text', 'MANUAL')), m('.desc', m('span', 'Tentukan hasil dari pernyataan yang Anda tulis sendiri.')), m('.calculator', [m('form.flex', {
+        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', {
+            style: { backgroundColor: randomizeColor() }
+        }, [m('.title', m('.title-text', 'MANUAL')), m('.desc', m('span', 'Tentukan hasil dari pernyataan yang Anda tulis sendiri.')), m('.calculator', [m('form.flex', {
             onsubmit: function onsubmit(e) {
                 e.preventDefault();
 
@@ -2406,13 +2512,53 @@ var app = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_tables_json__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_tables_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__core_tables_json__);
+
 
 
 
 var app = {
-    view: function view() {
-        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', [m('.title', m('.title-text', 'TABEL KEBENARAN'))])]);
+    oninit: function oninit(vnode) {
+        if (!vnode.attrs.type) {
+            m.route.set(m.route.get(), { type: 'negasi' });
+            vnode.attrs.type = 'negasi';
+        }
+    },
+    view: function view(vnode) {
+        return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', {
+            style: { backgroundColor: randomizeColor() }
+        }, [m('.title', m('.title-text', 'TABEL KEBENARAN')), m('.types.flex', [m('.type', {
+            onclick: function onclick() {
+                return m.route.set(m.route.get(), { type: 'negasi' });
+            },
+            class: vnode.attrs.type == 'negasi' ? 'active' : ''
+        }, m('span', 'Negasi')), m('.type', {
+            onclick: function onclick() {
+                return m.route.set(m.route.get(), { type: 'konjungsi' });
+            },
+            class: vnode.attrs.type == 'konjungsi' ? 'active' : ''
+        }, m('span', 'Konjungsi')), m('.type', {
+            onclick: function onclick() {
+                return m.route.set(m.route.get(), { type: 'disjungsi' });
+            },
+            class: vnode.attrs.type == 'disjungsi' ? 'active' : ''
+        }, m('span', 'Disjungsi')), m('.type', {
+            onclick: function onclick() {
+                return m.route.set(m.route.get(), { type: 'implikasi' });
+            },
+            class: vnode.attrs.type == 'implikasi' ? 'active' : ''
+        }, m('span', 'Implikasi')), m('.type', {
+            onclick: function onclick() {
+                return m.route.set(m.route.get(), { type: 'biimplikasi' });
+            },
+            class: vnode.attrs.type == 'biimplikasi' ? 'active' : ''
+        }, m('span', 'Biimplikasi'))]), m('.table-container', vnode.attrs.type == 'negasi' ? m('table', [m('thead', m('tr', [m('th', 'p'), m('th', '~p')])), m('tbody', [m('tr', [m('td', 'B'), m('td', 'S')]), m('tr', [m('td', 'S'), m('td', 'B')])])]) : m('table', [m('thead', m('tr', [m('th', 'p'), m('th', 'q'), m('th', 'p ' + __WEBPACK_IMPORTED_MODULE_1__core_tables_json___default.a[vnode.attrs.type].prefix + ' q')])), m('tbody', __WEBPACK_IMPORTED_MODULE_1__core_tables_json___default.a[vnode.attrs.type].values.map(function (o) {
+            return m('tr', o.map(function (i) {
+                return m('td', i);
+            }));
+        }))]))])]);
     }
 };
 
@@ -2429,6 +2575,17 @@ var app = {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */
+/***/ (function(module, exports) {
+
+module.exports = {"konjungsi":{"prefix":"^","values":[["B","B","B"],["B","S","S"],["S","B","S"],["S","S","S"]]},"disjungsi":{"prefix":"v","values":[["B","B","B"],["B","S","B"],["S","B","B"],["S","S","S"]]},"implikasi":{"prefix":"=>","values":[["B","B","B"],["B","S","S"],["S","B","B"],["S","S","B"]]},"biimplikasi":{"prefix":"<=>","values":[["B","B","B"],["B","S","S"],["S","B","S"],["S","S","B"]]}}
 
 /***/ })
 /******/ ]);

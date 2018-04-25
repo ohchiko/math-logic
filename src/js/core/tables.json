@@ -1,0 +1,38 @@
+{
+    "konjungsi": {
+        "prefix": "^",
+        "values": [
+            ["B", "B", "B"],
+            ["B", "S", "S"],
+            ["S", "B", "S"],
+            ["S", "S", "S"]
+        ]
+    },
+    "disjungsi": {
+        "prefix": "v",
+        "values": [
+            ["B", "B", "B"],
+            ["B", "S", "B"],
+            ["S", "B", "B"],
+            ["S", "S", "S"]
+        ]
+    },
+    "implikasi": {
+        "prefix": "=>",
+        "values": [
+            ["B", "B", "B"],
+            ["B", "S", "S"],
+            ["S", "B", "B"],
+            ["S", "S", "B"]
+        ]
+    },
+    "biimplikasi": {
+        "prefix": "<=>",
+        "values": [
+            ["B", "B", "B"],
+            ["B", "S", "S"],
+            ["S", "B", "S"],
+            ["S", "S", "B"]
+        ]
+    }
+}

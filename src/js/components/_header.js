@@ -1,6 +1,10 @@
 var app = {
     view: (vnode) => {
-        return m('header.flex', { class: vnode.attrs.invert ? 'invert' : '' }, [
+        return m('header.flex', {
+            class: vnode.attrs.invert ? 'invert' : '',
+            oncreate: (e) => e.dom.style.backgroundColor = document.querySelector('.content').style.backgroundColor,
+            onupdate: (e) => e.dom.style.backgroundColor = document.querySelector('.content').style.backgroundColor
+        }, [
             m('.title.flex',
                 m('a', {
                     href: '',
@@ -39,49 +43,49 @@ var app = {
                     m('a', {
                         href: '/negasi',
                         oncreate: m.route.link,
-                        class: m.route.get() == '/negasi' ? 'active' : ''
+                        class: m.route.get().includes('/negasi') ? 'active' : ''
                     },
                         m('span', 'Negasi'))),
                 m('li.nav-text',
                     m('a', {
                         href: '/konjungsi',
                         oncreate: m.route.link,
-                        class: m.route.get() == '/konjungsi' ? 'active' : ''
+                        class: m.route.get().includes('/konjungsi') ? 'active' : ''
                     },
                         m('span', 'Konjungsi'))),
                 m('li.nav-text',
                     m('a', {
                         href: '/disjungsi',
                         oncreate: m.route.link,
-                        class: m.route.get() == '/disjungsi' ? 'active' : ''
+                        class: m.route.get().includes('/disjungsi') ? 'active' : ''
                     },
                         m('span', 'Disjungsi'))),
                 m('li.nav-text',
                     m('a', {
                         href: '/implikasi',
                         oncreate: m.route.link,
-                        class: m.route.get() == '/implikasi' ? 'active' : ''
+                        class: m.route.get().includes('/implikasi') ? 'active' : ''
                     },
                         m('span', 'Implikasi'))),
                 m('li.nav-text',
                     m('a', {
                         href: '/biimplikasi',
                         oncreate: m.route.link,
-                        class: m.route.get() == '/biimplikasi' ? 'active' : ''
+                        class: m.route.get().includes('/biimplikasi') ? 'active' : ''
                     },
                         m('span', 'Biimplikasi'))),
                 m('li.nav-text',
                     m('a', {
                         href: '/manual',
                         oncreate: m.route.link,
-                        class: m.route.get() == '/manual' ? 'active' : ''
+                        class: m.route.get().includes('/manual') ? 'active' : ''
                     },
                         m('span', 'Manual'))),
                 m('li.nav-text',
                     m('a', {
                         href: '/tabel',
                         oncreate: m.route.link,
-                        class: m.route.get() == '/tabel' ? 'active' : ''
+                        class: m.route.get().includes('/tabel') ? 'active' : ''
                     },
                         m('span', 'Tabel Kebenaran'))),
             ]),

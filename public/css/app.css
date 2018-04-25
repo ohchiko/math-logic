@@ -20,6 +20,13 @@ a {
   text-decoration: none;
 }
 
+input,
+button {
+  border: none;
+  background-color: white;
+  border-radius: .1rem;
+}
+
 .container {
   height: 100vh;
   -webkit-box-orient: vertical;
@@ -29,7 +36,7 @@ a {
 }
 
 .container > header {
-  background-color: lightsteelblue;
+  background-color: teal;
   padding: 1rem 3rem;
   -webkit-box-flex: 0;
       -ms-flex: 0 1 auto;
@@ -115,7 +122,7 @@ a {
 }
 
 .container > header.invert {
-  background-color: white;
+  background-color: white !important;
   color: black;
   -webkit-box-shadow: 0 .05rem .15rem 0 #AAAAAA;
           box-shadow: 0 .05rem .15rem 0 #AAAAAA;
@@ -125,9 +132,7 @@ a {
 
 .container > header.invert > .title > a:hover,
 .container > header.invert > .title > a:focus {
-  -webkit-filter: none;
-          filter: none;
-  color: lightsteelblue;
+  color: teal;
 }
 
 .container > header.invert > .nav-container > .nav-text > a.active,
@@ -135,11 +140,10 @@ a {
 .container > header.invert > .nav-container > .nav-text > a:hover {
   -webkit-filter: none;
           filter: none;
-  color: lightsteelblue;
+  color: teal;
 }
 
 .container > .content {
-  background-color: lightsteelblue;
   padding: 3rem;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
@@ -218,8 +222,8 @@ a {
   text-align: center;
   font-weight: 400;
   background-color: turquoise;
-  -webkit-box-shadow: 0 0 .15rem 0 #AAAAAA;
-          box-shadow: 0 0 .15rem 0 #AAAAAA;
+  -webkit-box-shadow: 0 0 .15rem 0 #666666;
+          box-shadow: 0 0 .15rem 0 #666666;
   border-radius: .15rem;
   cursor: pointer;
   -webkit-transition: all .15s ease;
@@ -257,6 +261,60 @@ a {
   margin-left: 1rem;
   font-size: inherit;
   cursor: pointer;
+}
+
+.container > .content > .types > .type {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0;
+  padding: 1rem;
+  margin-right: 1rem;
+  text-align: center;
+  font-weight: 400;
+  background-color: turquoise;
+  -webkit-box-shadow: 0 0 .15rem 0 #666666;
+          box-shadow: 0 0 .15rem 0 #666666;
+  border-radius: .15rem;
+  cursor: pointer;
+  -webkit-transition: all .15s ease;
+  transition: all .15s ease;
+}
+
+.container > .content > .types > .type:last-child {
+  margin: 0;
+}
+
+.container > .content > .types > .type.active,
+.container > .content > .types > .type:hover,
+.container > .content > .types > .type:focus {
+  background-color: white;
+}
+
+.container > .content > .table-container {
+  margin-top: 2rem;
+  background-color: white;
+}
+
+.container > .content > .table-container > table {
+  width: 100%;
+  border-collapse: collapse;
+  -webkit-box-shadow: 0 0 .15rem 0 #AAAAAA;
+          box-shadow: 0 0 .15rem 0 #AAAAAA;
+  table-layout: fixed;
+}
+
+.container > .content > .table-container > table th,
+.container > .content > .table-container > table td {
+  padding: .5rem;
+  border: .1rem solid #AAAAAA;
+}
+
+.container > .content > .table-container > table > thead > tr {
+  background-color: turquoise;
+}
+
+.container > .content > .table-container > table td {
+  text-align: center;
 }
 
 .container > .content.invert {
@@ -328,7 +386,7 @@ a {
   .container > header > .nav-container.active > .nav-text > a:focus {
     -webkit-filter: none;
             filter: none;
-    color: lightsteelblue;
+    color: teal;
   }
 
   .container > header > .nav-container.active + .nav-cover {
@@ -389,6 +447,11 @@ a {
   .container > .content > .calculator > .result > input,
   .container > .content > .calculator > .result > button {
     margin: .5rem 0;
+  }
+
+  .container > .content > .types {
+    padding: 1rem 0;
+    overflow-x: auto;
   }
 }
 
