@@ -17,7 +17,7 @@ var app = {
                                 pernyataan yang menyangkal\
                                 pernyataan yang diberikan\
                                 (lawan dari pernyataan yang diberikan).')),
-                m('.calculator', [
+                m('.calculator.flex', [
                     m('form.flex', {
                         onsubmit: (e) => {
                             e.preventDefault();
