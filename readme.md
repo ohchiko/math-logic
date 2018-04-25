@@ -8,6 +8,10 @@ Jika Anda pernah merasa kebingungan dalam menghitung hasil dari pernyataan majem
 
 ## License
 
-mathLogics adalah aplikasi *open-source* yang dapat digunakan dan dikembangkan secara bersamaan.
+[mathLogics](https://github.com/ohchiko/math-logic) adalah aplikasi *open-source* yang dapat digunakan dan dikembangkan secara bersamaan.
 
 Anda dapat meninjau lisensi aplikasi ini di [LICENSE](https://github.com/ohchiko/math-logic/blob/master/LICENSE).
+
+## Changelog
+
+Perubahan versi pada aplikasi ini dapat dilihat di [CHANGELOG](https://github.com/ohchiko/math-logic/blob/master/CHANGELOG).
