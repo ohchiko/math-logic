@@ -2265,7 +2265,7 @@ var app = {
         }, [m('.title', m('.title-text', 'NEGASI')), m('.desc', m('span', 'Negasi (ingkaran) adalah\
                                 pernyataan yang menyangkal\
                                 pernyataan yang diberikan\
-                                (lawan dari pernyataan yang diberikan).')), m('.calculator', [m('form.flex', {
+                                (lawan dari pernyataan yang diberikan).')), m('.calculator.flex', [m('form.flex', {
             onsubmit: function onsubmit(e) {
                 e.preventDefault();
 

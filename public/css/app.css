@@ -167,6 +167,10 @@ button {
 
 .container > .content > .calculator {
   margin-top: 2rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .container > .content > .calculator > form {
@@ -210,7 +214,6 @@ button {
 }
 
 .container > .content > .calculator > .modes {
-  max-width: 50%;
   margin-top: 1rem;
 }
 
@@ -414,25 +417,24 @@ button {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: row wrap;
-            flex-flow: row wrap;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
   }
 
+  .container > .content > .calculator > form {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+  }
+
   .container > .content > .calculator > form > input,
   .container > .content > .calculator > form > .separator,
   .container > .content > .calculator > form > button {
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
     margin: .5rem 0;
-  }
-
-  .container > .content > .calculator > form > input {
-    -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
   }
 
   .container > .content > .calculator > .modes {
@@ -442,7 +444,6 @@ button {
             flex-direction: row;
     padding: 1rem 0;
     overflow-x: auto;
-    max-width: 100%;
   }
 
   .container > .content > .calculator > .modes > .mode {
