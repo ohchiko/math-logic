@@ -9,7 +9,6 @@ import {
 
 const app = function () {
     var str = null,
-        neg = /~\d/,
         opReg = /[\^|v|\=\>|\<\=\>]+/;
 
     for (var i = 0; i < arguments.length; i++) {
@@ -17,9 +16,17 @@ const app = function () {
         arguments[i] = arguments[i].replace(/salah|false|f|s/, '0');
     }
     if (arguments.length > 1) {
-        var a = arguments[0],
-            b = arguments[1],
+        var a = arguments[0].toLowerCase(),
+            b = arguments[1].toLowerCase(),
             op = arguments[2];
+
+        a = a.replace(/benar|true|t|b/, '1');
+        a = a.replace(/salah|false|f|s/, '1');
+        b = b.replace(/benar|true|t|b/, '1');
+        b = b.replace(/salah|false|f|s/, '1');
+
+        a = checkNegate(a);
+        b = checkNegate(b);
 
         if (!a || !b || !op) {
             console.error('Invalid argument(s) supplied.');
@@ -28,17 +35,13 @@ const app = function () {
 
         str = operate(a, b, op);
     } else {
-        arguments[0] = arguments[0].replace(/benar|true|t|b/, '1');
-        arguments[0] = arguments[0].replace(/salah|false|f|s/, '0');
+        arguments[0] = arguments[0].toLowerCase().replace(/benar|true|t|b/, '1');
+        arguments[0] = arguments[0].toLowerCase().replace(/salah|false|f|s/, '0');
         str = arguments[0];
+
+        str = checkNegate(str);
+
         if (str.length == 3) {
-            if (neg.test(str)) {
-                let val = neg.exec(str) + '',
-                    a = val.charAt(1);
-
-                str = str.replace(val, negasi(a));
-            }
-
             let a = str.charAt(0),
                 b = /\d$/.exec(str) + '',
                 op = opReg.exec(str) + '';
@@ -47,14 +50,11 @@ const app = function () {
         } else {
             var reg = /\d[\^|v|\=\>|\<\=\>]+\d/;
 
-            while (neg.test(str)) {
-                let val = neg.exec(str) + '',
-                    a = val.charAt(1);
-
-                str = str.replace(val, negasi(a));
-            }
+            str = checkNegate(str);
 
             while (reg.test(str)) {
+                str = checkNegate(str);
+
                 let val = reg.exec(str) + '',
                     a = val.charAt(0),
                     b = /\d$/.exec(val) + '',
@@ -67,7 +67,12 @@ const app = function () {
                 let hashtag = /\(#\)/;
                 if (hashtag.test(str)) str = str.replace(hashtag, res);
                 else str = str.replace(/#/, res);
+
+                str = checkNegate(str);
             }
+
+            str = checkNegate(str);
+
             if (str.length > 1) {
                 console.error('Invalid argument(s) supplied.');
                 return 'invalid';
@@ -95,6 +100,17 @@ const operate = (a, b, op) => {
             return biimplikasi(a, b)
             break;
     }
+}
+
+const checkNegate = (str) => {
+    var regex = /~\d/;
+    while (regex.test(str)) {
+        let val = regex.exec(str) + '',
+            a = val.charAt(1);
+
+        str = str.replace(val, negasi(a));
+    }
+    return str;
 }
 
 export default app;
