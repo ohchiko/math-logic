@@ -64,94 +64,7 @@
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var app = {
-    view: function view(vnode) {
-        return m('header.flex', { class: vnode.attrs.invert ? 'invert' : '' }, [m('.title.flex', m('a', {
-            href: '',
-            oncreate: m.route.link
-        }, 'mathLogics')), m('.flex'), m('.nav-bar.flex', {
-            onclick: function onclick(e) {
-                var next = document.querySelector('ul.nav-container');
-                if (next.classList) {
-                    next.classList.toggle('active');
-                    next.previousSibling.classList.toggle('active');
-                } else {
-                    var nextCls = next.className.split(' '),
-                        eCls = next.previousSibling.className.split(' '),
-                        i = nextCls.indexOf('active');
-
-                    if (i >= 0) {
-                        nextCls.splice(i, 1);
-                        eCls.splice(i, 1);
-                    } else {
-                        nextCls.push('active');
-                        eCls.push('active');
-                        next.className = nextCls.join(' ');
-                        next.previousSibling.className = nextCls.join(' ');
-                    }
-                }
-            }
-        }, [m('i.fas.fa-bars.fa-fw.fa-lg'), m('i.fas.fa-times.fa-fw.fa-lg')]), m('ul.nav-container.flex', [m('li.nav-text', m('a', {
-            href: '/negasi',
-            oncreate: m.route.link,
-            class: m.route.get() == '/negasi' ? 'active' : ''
-        }, m('span', 'Negasi'))), m('li.nav-text', m('a', {
-            href: '/konjungsi',
-            oncreate: m.route.link,
-            class: m.route.get() == '/konjungsi' ? 'active' : ''
-        }, m('span', 'Konjungsi'))), m('li.nav-text', m('a', {
-            href: '/disjungsi',
-            oncreate: m.route.link,
-            class: m.route.get() == '/disjungsi' ? 'active' : ''
-        }, m('span', 'Disjungsi'))), m('li.nav-text', m('a', {
-            href: '/implikasi',
-            oncreate: m.route.link,
-            class: m.route.get() == '/implikasi' ? 'active' : ''
-        }, m('span', 'Implikasi'))), m('li.nav-text', m('a', {
-            href: '/biimplikasi',
-            oncreate: m.route.link,
-            class: m.route.get() == '/biimplikasi' ? 'active' : ''
-        }, m('span', 'Biimplikasi'))), m('li.nav-text', m('a', {
-            href: '/manual',
-            oncreate: m.route.link,
-            class: m.route.get() == '/manual' ? 'active' : ''
-        }, m('span', 'Manual'))), m('li.nav-text', m('a', {
-            href: '/tabel',
-            oncreate: m.route.link,
-            class: m.route.get() == '/tabel' ? 'active' : ''
-        }, m('span', 'Tabel Kebenaran')))]), m('.nav-cover', {
-            onclick: function onclick(e) {
-                var next = document.querySelector('ul.nav-container');
-                if (next.classList) {
-                    next.classList.toggle('active');
-                    next.previousSibling.classList.toggle('active');
-                } else {
-                    var nextCls = next.className.split(' '),
-                        eCls = next.previousSibling.className.split(' '),
-                        i = nextCls.indexOf('active');
-
-                    if (i >= 0) {
-                        nextCls.splice(i, 1);
-                        eCls.splice(i, 1);
-                    } else {
-                        nextCls.push('active');
-                        eCls.push('active');
-                        next.className = nextCls.join(' ');
-                        next.previousSibling.className = nextCls.join(' ');
-                    }
-                }
-            }
-        })]);
-    }
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (app);
-
-/***/ }),
+/* 0 */,
 /* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1362,9 +1275,9 @@ var _16 = function(redrawService0) {
 			redrawService0.unsubscribe(root)
 			return
 		}
-		
+
 		if (component.view == null && typeof component !== "function") throw new Error("m.mount(element, component) expects a component, not a vnode")
-		
+
 		var run0 = function() {
 			redrawService0.render(root, Vnode(component))
 		}
@@ -2216,14 +2129,14 @@ var convert = function convert(from, to) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(23);
 
 
 
 var app = {
     view: function view() {
         return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */]), m('.content', [m('.title', [m('.title-text', 'LEARN'), m('.title-text', 'MATH LOGICS'), m('.title-text.invert', 'THROUGH'), m('.title-text.invert', 'WEB APPLICATION')]), m('.desc', m('span', 'Pelajari logika matematika\
-                                serta lakukan perhitungan\
+                                serta lakukan penghitungan\
                                 melalui aplikasi ini.'))])]);
     }
 };
@@ -2493,7 +2406,7 @@ var app = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(23);
 
 
 
