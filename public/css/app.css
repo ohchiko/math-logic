@@ -29,7 +29,7 @@ a {
 }
 
 .container > header {
-  background-color: turquoise;
+  background-color: lightsteelblue;
   padding: 1rem 3rem;
   -webkit-box-flex: 0;
       -ms-flex: 0 1 auto;
@@ -127,7 +127,7 @@ a {
 .container > header.invert > .title > a:focus {
   -webkit-filter: none;
           filter: none;
-  color: turquoise;
+  color: lightsteelblue;
 }
 
 .container > header.invert > .nav-container > .nav-text > a.active,
@@ -135,11 +135,11 @@ a {
 .container > header.invert > .nav-container > .nav-text > a:hover {
   -webkit-filter: none;
           filter: none;
-  color: turquoise;
+  color: lightsteelblue;
 }
 
 .container > .content {
-  background-color: turquoise;
+  background-color: lightsteelblue;
   padding: 3rem;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
@@ -230,7 +230,7 @@ a {
   .container > header > .nav-container.active > .nav-text > a:focus {
     -webkit-filter: none;
             filter: none;
-    color: turquoise;
+    color: lightsteelblue;
   }
 
   .container > header > .nav-container.active + .nav-cover {

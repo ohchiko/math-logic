@@ -1,5 +1,5 @@
 
-import Header from './header';
+import Header from './_header';
 
 var app = {
     view: () => {

@@ -1,5 +1,6 @@
 {
     "/public/js/app.js": "/public/js/app.js",
     "/public/css/app.css": "/public/css/app.css",
-    "/public/css/fontawesome.css": "/public/css/fontawesome.css"
+    "/public/css/fontawesome.css": "/public/css/fontawesome.css",
+    "/public/css/gfonts.css": "/public/css/gfonts.css"
 }

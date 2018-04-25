@@ -1,5 +1,5 @@
 
-import Header from './header';
+import Header from './_header';
 
 var app = {
     view: () => {
@@ -14,7 +14,7 @@ var app = {
                 ]),
                 m('.desc',
                     m('span', 'Pelajari logika matematika\
-                                serta lakukan perhitungan\
+                                serta lakukan penghitungan\
                                 melalui aplikasi ini.'))
             ])
         ]);

@@ -64,94 +64,7 @@
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var app = {
-    view: function view(vnode) {
-        return m('header.flex', { class: vnode.attrs.invert ? 'invert' : '' }, [m('.title.flex', m('a', {
-            href: '',
-            oncreate: m.route.link
-        }, 'mathLogics')), m('.flex'), m('.nav-bar.flex', {
-            onclick: function onclick(e) {
-                var next = document.querySelector('ul.nav-container');
-                if (next.classList) {
-                    next.classList.toggle('active');
-                    next.previousSibling.classList.toggle('active');
-                } else {
-                    var nextCls = next.className.split(' '),
-                        eCls = next.previousSibling.className.split(' '),
-                        i = nextCls.indexOf('active');
-
-                    if (i >= 0) {
-                        nextCls.splice(i, 1);
-                        eCls.splice(i, 1);
-                    } else {
-                        nextCls.push('active');
-                        eCls.push('active');
-                        next.className = nextCls.join(' ');
-                        next.previousSibling.className = nextCls.join(' ');
-                    }
-                }
-            }
-        }, [m('i.fas.fa-bars.fa-fw.fa-lg'), m('i.fas.fa-times.fa-fw.fa-lg')]), m('ul.nav-container.flex', [m('li.nav-text', m('a', {
-            href: '/negasi',
-            oncreate: m.route.link,
-            class: m.route.get() == '/negasi' ? 'active' : ''
-        }, m('span', 'Negasi'))), m('li.nav-text', m('a', {
-            href: '/konjungsi',
-            oncreate: m.route.link,
-            class: m.route.get() == '/konjungsi' ? 'active' : ''
-        }, m('span', 'Konjungsi'))), m('li.nav-text', m('a', {
-            href: '/disjungsi',
-            oncreate: m.route.link,
-            class: m.route.get() == '/disjungsi' ? 'active' : ''
-        }, m('span', 'Disjungsi'))), m('li.nav-text', m('a', {
-            href: '/implikasi',
-            oncreate: m.route.link,
-            class: m.route.get() == '/implikasi' ? 'active' : ''
-        }, m('span', 'Implikasi'))), m('li.nav-text', m('a', {
-            href: '/biimplikasi',
-            oncreate: m.route.link,
-            class: m.route.get() == '/biimplikasi' ? 'active' : ''
-        }, m('span', 'Biimplikasi'))), m('li.nav-text', m('a', {
-            href: '/manual',
-            oncreate: m.route.link,
-            class: m.route.get() == '/manual' ? 'active' : ''
-        }, m('span', 'Manual'))), m('li.nav-text', m('a', {
-            href: '/tabel',
-            oncreate: m.route.link,
-            class: m.route.get() == '/tabel' ? 'active' : ''
-        }, m('span', 'Tabel Kebenaran')))]), m('.nav-cover', {
-            onclick: function onclick(e) {
-                var next = document.querySelector('ul.nav-container');
-                if (next.classList) {
-                    next.classList.toggle('active');
-                    next.previousSibling.classList.toggle('active');
-                } else {
-                    var nextCls = next.className.split(' '),
-                        eCls = next.previousSibling.className.split(' '),
-                        i = nextCls.indexOf('active');
-
-                    if (i >= 0) {
-                        nextCls.splice(i, 1);
-                        eCls.splice(i, 1);
-                    } else {
-                        nextCls.push('active');
-                        eCls.push('active');
-                        next.className = nextCls.join(' ');
-                        next.previousSibling.className = nextCls.join(' ');
-                    }
-                }
-            }
-        })]);
-    }
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (app);
-
-/***/ }),
+/* 0 */,
 /* 1 */
 /***/ (function(module, exports) {
 
@@ -183,8 +96,8 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(3);
-__webpack_require__(12);
-module.exports = __webpack_require__(13);
+__webpack_require__(16);
+module.exports = __webpack_require__(17);
 
 
 /***/ }),
@@ -197,10 +110,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_negasi__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_konjungsi__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_disjungsi__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_implikasi__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_biimplikasi__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_manual__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_tabel__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_implikasi__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_biimplikasi__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_manual__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_tabel__ = __webpack_require__(15);
 window.m = __webpack_require__(4);
 
 
@@ -1945,14 +1858,14 @@ process.umask = function() { return 0; };
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(23);
 
 
 
 var app = {
     view: function view() {
         return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */]), m('.content', [m('.title', [m('.title-text', 'LEARN'), m('.title-text', 'MATH LOGICS'), m('.title-text.invert', 'THROUGH'), m('.title-text.invert', 'WEB APPLICATION')]), m('.desc', m('span', 'Pelajari logika matematika\
-                                serta lakukan perhitungan\
+                                serta lakukan penghitungan\
                                 melalui aplikasi ini.'))])]);
     }
 };
@@ -1964,7 +1877,7 @@ var app = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(23);
 
 
 
@@ -1984,7 +1897,7 @@ var app = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(23);
 
 
 
@@ -2003,7 +1916,7 @@ var app = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(23);
 
 
 
@@ -2019,43 +1932,10 @@ var app = {
 
 /***/ }),
 /* 12 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */,
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */,
-/* 34 */,
-/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(23);
 
 
 
@@ -2071,11 +1951,11 @@ var app = {
 /* harmony default export */ __webpack_exports__["a"] = (app);
 
 /***/ }),
-/* 36 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(23);
 
 
 
@@ -2090,11 +1970,11 @@ var app = {
 /* harmony default export */ __webpack_exports__["a"] = (app);
 
 /***/ }),
-/* 37 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(23);
 
 
 
@@ -2107,17 +1987,122 @@ var app = {
 /* harmony default export */ __webpack_exports__["a"] = (app);
 
 /***/ }),
-/* 38 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(23);
 
 
 
 var app = {
     view: function view() {
         return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', [m('.title', m('.title-text', 'TABEL KEBENARAN'))])]);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (app);
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var app = {
+    view: function view(vnode) {
+        return m('header.flex', { class: vnode.attrs.invert ? 'invert' : '' }, [m('.title.flex', m('a', {
+            href: '',
+            oncreate: m.route.link
+        }, 'mathLogics')), m('.flex'), m('.nav-bar.flex', {
+            onclick: function onclick(e) {
+                var next = document.querySelector('ul.nav-container');
+                if (next.classList) {
+                    next.classList.toggle('active');
+                    next.previousSibling.classList.toggle('active');
+                } else {
+                    var nextCls = next.className.split(' '),
+                        eCls = next.previousSibling.className.split(' '),
+                        i = nextCls.indexOf('active');
+
+                    if (i >= 0) {
+                        nextCls.splice(i, 1);
+                        eCls.splice(i, 1);
+                    } else {
+                        nextCls.push('active');
+                        eCls.push('active');
+                        next.className = nextCls.join(' ');
+                        next.previousSibling.className = nextCls.join(' ');
+                    }
+                }
+            }
+        }, [m('i.fas.fa-bars.fa-fw.fa-lg'), m('i.fas.fa-times.fa-fw.fa-lg')]), m('ul.nav-container.flex', [m('li.nav-text', m('a', {
+            href: '/negasi',
+            oncreate: m.route.link,
+            class: m.route.get() == '/negasi' ? 'active' : ''
+        }, m('span', 'Negasi'))), m('li.nav-text', m('a', {
+            href: '/konjungsi',
+            oncreate: m.route.link,
+            class: m.route.get() == '/konjungsi' ? 'active' : ''
+        }, m('span', 'Konjungsi'))), m('li.nav-text', m('a', {
+            href: '/disjungsi',
+            oncreate: m.route.link,
+            class: m.route.get() == '/disjungsi' ? 'active' : ''
+        }, m('span', 'Disjungsi'))), m('li.nav-text', m('a', {
+            href: '/implikasi',
+            oncreate: m.route.link,
+            class: m.route.get() == '/implikasi' ? 'active' : ''
+        }, m('span', 'Implikasi'))), m('li.nav-text', m('a', {
+            href: '/biimplikasi',
+            oncreate: m.route.link,
+            class: m.route.get() == '/biimplikasi' ? 'active' : ''
+        }, m('span', 'Biimplikasi'))), m('li.nav-text', m('a', {
+            href: '/manual',
+            oncreate: m.route.link,
+            class: m.route.get() == '/manual' ? 'active' : ''
+        }, m('span', 'Manual'))), m('li.nav-text', m('a', {
+            href: '/tabel',
+            oncreate: m.route.link,
+            class: m.route.get() == '/tabel' ? 'active' : ''
+        }, m('span', 'Tabel Kebenaran')))]), m('.nav-cover', {
+            onclick: function onclick(e) {
+                var next = document.querySelector('ul.nav-container');
+                if (next.classList) {
+                    next.classList.toggle('active');
+                    next.previousSibling.classList.toggle('active');
+                } else {
+                    var nextCls = next.className.split(' '),
+                        eCls = next.previousSibling.className.split(' '),
+                        i = nextCls.indexOf('active');
+
+                    if (i >= 0) {
+                        nextCls.splice(i, 1);
+                        eCls.splice(i, 1);
+                    } else {
+                        nextCls.push('active');
+                        eCls.push('active');
+                        next.className = nextCls.join(' ');
+                        next.previousSibling.className = nextCls.join(' ');
+                    }
+                }
+            }
+        })]);
     }
 };
 
