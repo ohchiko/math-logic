@@ -1,4 +1,6 @@
+
 window.m = require('mithril');
+window.handle = require('./core/handler').default;
 
 import Home from './components/landing';
 import Negasi from './components/negasi';

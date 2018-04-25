@@ -183,8 +183,8 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(3);
-__webpack_require__(21);
-module.exports = __webpack_require__(16);
+__webpack_require__(16);
+module.exports = __webpack_require__(17);
 
 
 /***/ }),
@@ -201,7 +201,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_biimplikasi__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_manual__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_tabel__ = __webpack_require__(15);
+
 window.m = __webpack_require__(4);
+window.handle = __webpack_require__(23).default;
 
 
 
@@ -1969,12 +1971,93 @@ var app = {
 
 
 var app = {
-    view: function view() {
+    view: function view(vnode) {
         return m('.container.flex', [m(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */], { invert: true }), m('.content', [m('.title', m('.title-text', 'NEGASI')), m('.desc', m('span', 'Negasi (ingkaran) adalah\
                                 pernyataan yang menyangkal\
                                 pernyataan yang diberikan\
-                                (lawan dari pernyataan yang diberikan).'))])]);
+                                (lawan dari pernyataan yang diberikan).')), m('.calculator', [m('form.flex', {
+            onsubmit: function onsubmit(e) {
+                e.preventDefault();
+
+                var result = handle('~' + e.target.elements.stm.value);
+                if (vnode.attrs.mode) {
+                    result = convert(result, vnode.attrs.mode);
+                }
+                document.getElementById('res').value = result;
+            }
+        }, [m('input', {
+            type: 'text',
+            name: 'stm',
+            placeholder: 'Pernyataan (co. 1|benar|true|...)',
+            required: 'required'
+        }), m('button', { type: 'submit' }, 'Result')]), m('.modes.flex', [m('.mode', {
+            onclick: function onclick() {
+                m.route.set(m.route.get(), { mode: '1/0' });
+                var val = document.getElementById('res').value;
+                if (val != '') {
+                    document.getElementById('res').value = convert(val, '1/0');
+                }
+            },
+            class: vnode.attrs.mode == '1/0' ? 'active' : ''
+        }, m('span', '1/0')), m('.mode', {
+            onclick: function onclick() {
+                m.route.set(m.route.get(), { mode: 'benar/salah' });
+                var val = document.getElementById('res').value;
+                if (val != '') {
+                    document.getElementById('res').value = convert(val, 'benar/salah');
+                }
+            },
+            class: vnode.attrs.mode == 'benar/salah' ? 'active' : ''
+        }, m('span', 'benar/salah')), m('.mode', {
+            onclick: function onclick() {
+                m.route.set(m.route.get(), { mode: 'true/false' });
+                var val = document.getElementById('res').value;
+                if (val != '') {
+                    document.getElementById('res').value = convert(val, 'true/false');
+                }
+            },
+            class: vnode.attrs.mode == 'true/false' ? 'active' : ''
+        }, m('span', 'true/false')), m('.mode', {
+            onclick: function onclick() {
+                m.route.set(m.route.get(), { mode: 'b/s' });
+                var val = document.getElementById('res').value;
+                if (val != '') {
+                    document.getElementById('res').value = convert(val, 'b/s');
+                }
+            },
+            class: vnode.attrs.mode == 'b/s' ? 'active' : ''
+        }, m('span', 'b/s')), m('.mode', {
+            onclick: function onclick() {
+                m.route.set(m.route.get(), { mode: 't/f' });
+                var val = document.getElementById('res').value;
+                if (val != '') {
+                    document.getElementById('res').value = convert(val, 't/f');
+                }
+            },
+            class: vnode.attrs.mode == 't/f' ? 'active' : ''
+        }, m('span', 't/f'))]), m('.result.flex', [m('input#res', {
+            placeholder: 'Hasil',
+            readonly: 'readonly'
+        }), m('button', {
+            type: 'button',
+            onclick: function onclick(e) {
+                var result = e.target.previousSibling,
+                    modes = result.parentNode.previousSibling,
+                    form = modes.previousSibling;
+                result.value = '';
+                m.route.set(m.route.get(), { mode: '' });
+                form.reset();
+            }
+        }, 'Reset')])])])]);
     }
+};
+
+var convert = function convert(val, to) {
+    val = val.replace(/benar|true|t|b/, '1');
+    val = val.replace(/salah|false|f|s/, '0');
+    val = +val;
+    to = to.split('/');
+    return val ? to[0] : to[1];
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (app);
@@ -2097,14 +2180,158 @@ var app = {
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */
+/* 17 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__operations__ = __webpack_require__(24);
+
+
+
+var app = function app() {
+    var str = null,
+        neg = /~\d/,
+        opReg = /[\^|v|\=\>|\<\=\>]+/;
+
+    for (var i = 0; i < arguments.length; i++) {
+        arguments[i] = arguments[i].replace(/benar|true|t|b/, '1');
+        arguments[i] = arguments[i].replace(/salah|false|f|s/, '0');
+    }
+    if (arguments.length > 1) {
+        var a = arguments[0],
+            b = arguments[1],
+            op = arguments[2];
+
+        if (!a || !b || !op) {
+            console.error('Invalid argument(s) supplied.');
+            return 'invalid';
+        }
+
+        str = operate(a, b, op);
+    } else {
+        arguments[0] = arguments[0].replace(/benar|true|t|b/, '1');
+        arguments[0] = arguments[0].replace(/salah|false|f|s/, '0');
+        str = arguments[0];
+        if (str.length == 3) {
+            if (neg.test(str)) {
+                var val = neg.exec(str) + '',
+                    _a2 = val.charAt(1);
+
+                str = str.replace(val, Object(__WEBPACK_IMPORTED_MODULE_0__operations__["e" /* negasi */])(_a2));
+            }
+
+            var _a = str.charAt(0),
+                _b = /\d$/.exec(str) + '',
+                _op = opReg.exec(str) + '';
+
+            str = operate(_a, _b, _op);
+        } else {
+            var reg = /\d[\^|v|\=\>|\<\=\>]+\d/;
+
+            while (neg.test(str)) {
+                var _val = neg.exec(str) + '',
+                    _a3 = _val.charAt(1);
+
+                str = str.replace(_val, Object(__WEBPACK_IMPORTED_MODULE_0__operations__["e" /* negasi */])(_a3));
+            }
+
+            while (reg.test(str)) {
+                var _val2 = reg.exec(str) + '',
+                    _a4 = _val2.charAt(0),
+                    _b2 = /\d$/.exec(_val2) + '',
+                    _op2 = opReg.exec(_val2) + '';
+
+                str = str.replace(_val2, '#');
+
+                var res = operate(_a4, _b2, _op2);
+
+                var hashtag = /\(#\)/;
+                if (hashtag.test(str)) str = str.replace(hashtag, res);else str = str.replace(/#/, res);
+            }
+            if (str.length > 1) {
+                console.error('Invalid argument(s) supplied.');
+                return 'invalid';
+            }
+        }
+    }
+    return str;
+};
+
+var operate = function operate(a, b, op) {
+    switch (op) {
+        case '^':
+            return Object(__WEBPACK_IMPORTED_MODULE_0__operations__["d" /* konjungsi */])(a, b);
+            break;
+
+        case 'v':
+            return Object(__WEBPACK_IMPORTED_MODULE_0__operations__["b" /* disjungsi */])(a, b);
+            break;
+
+        case '=>':
+            return Object(__WEBPACK_IMPORTED_MODULE_0__operations__["c" /* implikasi */])(a, b);
+            break;
+
+        case '<=>':
+            return Object(__WEBPACK_IMPORTED_MODULE_0__operations__["a" /* biimplikasi */])(a, b);
+            break;
+    }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (app);
+
+/***/ }),
+/* 24 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return negasi; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return konjungsi; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return disjungsi; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return implikasi; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return biimplikasi; });
+
+var negasi = function negasi(a) {
+    a = a == true;
+    return +!a;
+};
+
+var konjungsi = function konjungsi(a, b) {
+    a = a == true;
+    b = b == true;
+    return +(a && b);
+};
+
+var disjungsi = function disjungsi(a, b) {
+    a = a == true;
+    b = b == true;
+    return +(a || b);
+};
+
+var implikasi = function implikasi(a, b) {
+    a = a == true;
+    b = b == true;
+    if (!b && a) return +false;
+    return +true;
+};
+
+var biimplikasi = function biimplikasi(a, b) {
+    a = a == true;
+    b = b == true;
+    if (a && b || !a && !b) return +true;
+    return +false;
+};
 
 /***/ })
 /******/ ]);
