@@ -3,6 +3,19 @@ Seluruh pengembangan atas aplikasi ini didokumentasikan di sini.
 
 ## [Unreleased]
 
+## 1.0.3 -2018-04-26
+### Fixed
+- Bar navigasi menyempit pada *mobile-view*
+
+## 1.0.2 - 2018-04-26
+### Fixed
+- Mode tampilan hasil tidak muncul pada *mobile-view*
+
+## 1.0.1 - 2018-04-25
+### Changed
+- URL untuk versi *unreleased* pada CHANGELOG.
+- Referensi berkas CHANGELOG ditambahkan pada readme.
+
 ## 1.0.0 - 2018-04-25
 ### Added
 - Fitur tabel kebenaran

@@ -254,6 +254,7 @@
     .container {
         > header {
             padding: 1rem;
+            flex-shrink: 0;
 
             > .nav-bar {
                 display: flex;
