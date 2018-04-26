@@ -41,42 +41,42 @@ var app = {
             m('ul.nav-container.flex', [
                 m('li.nav-text',
                     m('a', {
-                        href: '/negasi',
+                        href: '/negasi?' + m.buildQueryString({ mode: '1/0' }),
                         oncreate: m.route.link,
                         class: m.route.get().includes('/negasi') ? 'active' : ''
                     },
                         m('span', 'Negasi'))),
                 m('li.nav-text',
                     m('a', {
-                        href: '/konjungsi',
+                        href: '/konjungsi?' + m.buildQueryString({ mode: '1/0' }),
                         oncreate: m.route.link,
                         class: m.route.get().includes('/konjungsi') ? 'active' : ''
                     },
                         m('span', 'Konjungsi'))),
                 m('li.nav-text',
                     m('a', {
-                        href: '/disjungsi',
+                        href: '/disjungsi?' + m.buildQueryString({ mode: '1/0' }),
                         oncreate: m.route.link,
                         class: m.route.get().includes('/disjungsi') ? 'active' : ''
                     },
                         m('span', 'Disjungsi'))),
                 m('li.nav-text',
                     m('a', {
-                        href: '/implikasi',
+                        href: '/implikasi?' + m.buildQueryString({ mode: '1/0' }),
                         oncreate: m.route.link,
                         class: m.route.get().includes('/implikasi') ? 'active' : ''
                     },
                         m('span', 'Implikasi'))),
                 m('li.nav-text',
                     m('a', {
-                        href: '/biimplikasi',
+                        href: '/biimplikasi?' + m.buildQueryString({ mode: '1/0' }),
                         oncreate: m.route.link,
                         class: m.route.get().includes('/biimplikasi') ? 'active' : ''
                     },
                         m('span', 'Biimplikasi'))),
                 m('li.nav-text',
                     m('a', {
-                        href: '/manual',
+                        href: '/manual?' + m.buildQueryString({ mode: '1/0' }),
                         oncreate: m.route.link,
                         class: m.route.get().includes('/manual') ? 'active' : ''
                     },

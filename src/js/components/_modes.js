@@ -1,9 +1,4 @@
 const app = {
-    oninit: (vnode) => {
-        if (!vnode.attrs.mode) {
-            m.route.set(m.route.get(), {mode: '1/0'});
-        }
-    },
     view: (vnode) => {
         return m('.modes.flex', [
             m('.mode', {
