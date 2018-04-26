@@ -3,7 +3,11 @@ Seluruh pengembangan atas aplikasi ini didokumentasikan di sini.
 
 ## [Unreleased]
 
-## 1.0.3 -2018-04-26
+## 1.0.4 - 2018-04-26
+### Changed
+- Cara penghitungan biimplikasi (awalnya `((a && b) || (!a && !b))` menjadi `(a == b)`)
+
+## 1.0.3 - 2018-04-26
 ### Fixed
 - Bar navigasi menyempit pada *mobile-view*
 
