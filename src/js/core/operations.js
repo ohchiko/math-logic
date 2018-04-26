@@ -26,6 +26,6 @@ export const implikasi = (a, b) => {
 export const biimplikasi = (a, b) => {
     a = a == true;
     b = b == true;
-    if ((a && b) || (!a && !b)) return + true;
+    if (a == b) return + true;
     return + false;
 }
