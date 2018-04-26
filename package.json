@@ -1,6 +1,6 @@
 {
   "name": "math-logic",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "tugas mata kuliah logika matematika membuat aplikasi logika matematika",
   "main": "app.js",
   "scripts": {
