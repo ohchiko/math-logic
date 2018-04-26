@@ -329,6 +329,8 @@ button {
 @media all and (max-width: 640px) {
   .container > header {
     padding: 1rem;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
   }
 
   .container > header > .nav-bar {
