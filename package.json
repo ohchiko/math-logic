@@ -1,6 +1,6 @@
 {
   "name": "math-logic",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "tugas mata kuliah logika matematika membuat aplikasi logika matematika",
   "main": "app.js",
   "scripts": {
@@ -24,7 +24,9 @@
   "homepage": "https://github.com/ohchiko/math-logic#readme",
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",
-    "laravel-mix": "^2.1.11"
+    "laravel-mix": "^4.0.15",
+    "webpack-dev-server": ">=3.1.11",
+    "tar": ">=4.1.1"
   },
   "dependencies": {
     "mithril": "^1.1.6"
