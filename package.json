@@ -25,7 +25,11 @@
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",
     "laravel-mix": "^4.1.2",
+    "resolve-url-loader": "^3.1.0",
+    "sass": "^1.23.0",
+    "sass-loader": "^7.3.1",
     "tar": "^4.4.10",
+    "vue-template-compiler": "^2.6.10",
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
