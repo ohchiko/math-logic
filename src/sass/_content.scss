@@ -107,6 +107,10 @@
 
             > .title-text.invert {
                 filter: invert(100%);
+
+                > span {
+                    background: $mainColor;
+                }
             }
         }
 
