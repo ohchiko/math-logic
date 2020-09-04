@@ -33,7 +33,7 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
-    "mithril": "^1.1.6",
+    "mithril": "^1.1.7",
     "lodash": ">=4.17.13"
   }
 }
